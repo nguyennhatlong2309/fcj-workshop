@@ -52,7 +52,7 @@
                 .Lang }} {{ $selected := false }} {{ if eq $pageLang .Lang}}
                 <option
                   id="{{ $translation.Language }}"
-                  value="{{ $translation.Permalink }}"
+                  value="{{ $translation.RelPermalink }}"
                   selected
                 >
                   {{ .LanguageName }}
@@ -60,7 +60,7 @@
                 {{ else }}
                 <option
                   id="{{ $translation.Language }}"
-                  value="{{ $translation.Permalink }}"
+                  value="{{ $translation.RelPermalink }}"
                 >
                   {{ .LanguageName }}
                 </option>

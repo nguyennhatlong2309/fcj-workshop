@@ -6,120 +6,68 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+# Báo cáo sự kiện: Buổi Chia sẻ Kỹ năng & Công nghệ - First Cloud AI Journey
 
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+### Thông tin sự kiện
 
-### Mục Đích Của Sự Kiện
+* **Tên sự kiện:** Buổi Chia sẻ Kỹ năng & Công nghệ - First Cloud AI Journey
+* **Thời gian:** 09:00 - 12:00, ngày 25/06/2026
+* **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Tòa nhà Bitexco Financial, Số 02 Đường Hải Triều, Quận 1, TP. Hồ Chí Minh
+* **Vai trò:** Người tham dự
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+---
 
-### Danh Sách Diễn Giả
+### Nội dung chính
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+Trong buổi chia sẻ, em đã được lắng nghe những chia sẻ quý báu từ các anh chị đi trước về định hướng phát triển bản thân, kỹ thuật chuyên môn và văn hóa làm việc tại doanh nghiệp:
 
-### Nội Dung Nổi Bật
+#### 1. Kỹ năng mềm & Động lực bản thân (Diễn giả: Anh Nghị)
+* **Thông điệp truyền cảm hứng:** Vượt qua nỗi sợ hãi của bản thân, luôn giữ thái độ tích cực để đón nhận khi cơ hội gõ cửa.
+* **Bài học sống:** Luôn tin tưởng vào chính mình, lấy ví dụ thực tiễn từ hành trình phát triển cá nhân của chính diễn giả để làm động lực phấn đấu.
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### 2. Demo dự án thực tế (Diễn giả: Anh Kiên & Anh Hiếu)
+* **Giới thiệu công nghệ:** Buổi demo dự án thực tế tích hợp các dịch vụ điện toán đám mây cốt lõi của AWS bao gồm:
+  * **Amazon CloudFront:** Dịch vụ mạng phân phối nội dung (CDN) giúp tăng tốc độ tải trang và giảm độ trễ.
+  * **Amazon WAF (Web Application Firewall):** Bảo vệ ứng dụng web khỏi các lỗ hổng bảo mật phổ biến.
+  * **AWS Amplify:** Nền tảng hỗ trợ phát triển ứng dụng full-stack (frontend & backend) nhanh chóng và dễ dàng.
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+#### 3. Phân tích dữ liệu & Kỹ năng tuyển dụng (Diễn giả: Anh Victor)
+* **Lĩnh vực Data Analysis:** Giới thiệu tổng quan về hướng đi phân tích dữ liệu.
+* **Kỹ năng phỏng vấn & trao đổi:** Cách nói chuyện và tạo ấn tượng tốt với nhà tuyển dụng.
+* **Tư duy giao tiếp:** Khi cung cấp thông tin, cần đứng ở góc độ của người yêu cầu (nhà tuyển dụng/khách hàng) để hiểu rõ họ thực sự cần gì và đưa ra câu trả lời chính xác, giá trị nhất.
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### 4. Văn hóa làm việc tại AWS (Diễn giả: Anh Nguyễn Mạnh Cường)
+* **Triết lý AWS:** Chia sẻ sâu sắc về văn hóa làm việc độc đáo tại Amazon/AWS:
+  * **"It's only Day 1":** Luôn coi mỗi ngày đều là ngày đầu tiên để duy trì tinh thần khởi nghiệp, không ngừng học hỏi và đổi mới sáng tạo.
+  * **"Customer Obsession":** Sự "ám ảnh khách hàng" - đặt khách hàng làm trung tâm của mọi quyết định kỹ thuật và sản phẩm.
+  * **Meaningful:** Tạo ra những giá trị thực sự có ý nghĩa và đóng góp thiết thực cho cộng đồng và doanh nghiệp.
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+#### 5. Định hướng DevOps (Diễn giả: Anh Trương Hoàng Trọng)
+* **Tổng quan DevOps:** Giới thiệu chi tiết về công việc thực tế của một kỹ sư DevOps, vai trò kết nối giữa phát triển phần mềm (Development) và vận hành hệ thống (Operations).
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+---
 
-#### Domain-Driven Design (DDD)
+### Bài học rút ra & Ứng dụng thực tế
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+* **Về tư duy và định hướng:** Sự tự tin và tinh thần chủ động đón nhận cơ hội là chìa khóa để tiến xa trong ngành công nghệ.
+* **Về kỹ năng giao tiếp:** Áp dụng tư duy "đặt mình vào vị trí của người khác" trong giao tiếp kỹ thuật cũng như khi phỏng vấn xin việc để mang lại thông tin hữu ích và hiệu quả nhất.
+* **Về kiến thức kỹ thuật:** Hiểu rõ hơn về cách phối hợp các dịch vụ front-end/back-end (Amplify) kết hợp bảo mật (WAF) và tối ưu truyền tải (CloudFront) trong một dự án thực tế.
+* **Về văn hóa làm việc:** Thấm nhuần tinh thần "Day 1" và tư duy hướng tới khách hàng của AWS, áp dụng trực tiếp vào việc thực hiện và hoàn thiện dự án Workshop cá nhân.
 
-#### Event-Driven Architecture
+---
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+### Một số hình ảnh khi tham gia sự kiện
 
-#### Compute Evolution
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: center; margin: 20px 0;">
+  <div style="display: flex; gap: 10px; justify-content: center; width: 100%;">
+    <img src="/images/even1/z7965897302643_56efab19eed7a36958ad0b9b592c8b69.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 1">
+    <img src="/images/even1/z7965897354595_b7f1fbd4b92c53f5305cd376092e4cd3.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 2">
+    <img src="/images/even1/z7965897408282_66543b801c3350c2f63902847532a116.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 3">
+  </div>
+  <div style="display: flex; gap: 10px; justify-content: center; width: 100%;">
+    <img src="/images/even1/z7965897462722_ac2c6fa441266ea86ac98ba45fc83fcb.jpg" style="flex: 1; max-width: 49.5%; min-width: 0; object-fit: cover; aspect-ratio: 16/10; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 4">
+    <img src="/images/even1/z7965897514599_f10ce035d2f253e2e55644bb44bcc29d.jpg" style="flex: 1; max-width: 49.5%; min-width: 0; object-fit: cover; aspect-ratio: 16/10; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 5">
+  </div>
+  <p style="text-align: center; font-style: italic; color: #555; margin-top: 5px; font-size: 0.95em;">Một số hình ảnh về event</p>
+</div>
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
-
-#### Amazon Q Developer
-
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
-
-### Những Gì Học Được
-
-#### Tư Duy Thiết Kế
-
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
-
-#### Kiến Trúc Kỹ Thuật
-
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
-
-#### Chiến Lược Hiện Đại Hóa
-
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
-
-### Ứng Dụng Vào Công Việc
-
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
-
-### Trải nghiệm trong event
-
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
-
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
-
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
-
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
-
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
-
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
-
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.

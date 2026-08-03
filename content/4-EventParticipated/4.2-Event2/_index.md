@@ -6,121 +6,59 @@ chapter: false
 pre: " <b> 4.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy it verbatim** into your report, including this warning.
-{{% /notice %}}
+# Event Report: Career Orientation & Job Market Trends Sharing Session - First Cloud AI Journey
 
-# Summary Report: “GenAI-powered App-DB Modernization workshop”
+### Event Information
 
-### Event Objectives
+* **Event Name:** Career Orientation & Job Market Trends Sharing Session - First Cloud AI Journey
+* **Date & Time:** 09:00 - 12:00, July 4, 2026
+* **Location:** Online (Webinar)
+* **Role:** Attendee
 
-- Share best practices in modern application design
-- Introduce Domain-Driven Design (DDD) and event-driven architecture
-- Provide guidance on selecting the right compute services
-- Present AI tools to support the development lifecycle
-
-### Speakers
-
-- **Jignesh Shah** – Director, Open Source Databases
-- **Erica Liu** – Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** – Assc. Specialist SA, Serverless Amazon Web Services
+---
 
 ### Key Highlights
 
-#### Identifying the drawbacks of legacy application architecture
+During this sharing session, I had the opportunity to listen to real-world stories and valuable career advice from leading industry experts regarding job market trends, workplace skills, and career development within the Cloud/AWS ecosystem:
 
-- Long product release cycles → Lost revenue/missed opportunities  
-- Inefficient operations → Reduced productivity, higher costs  
-- Non-compliance with security regulations → Security breaches, loss of reputation  
+#### 1. Insights from Swinburne Vietnam (Speaker: Mr. Duy)
+* **Key sharing:** Practical perspectives and valuable experiences regarding the collaboration between Swinburne Vietnam and businesses to best prepare students for the professional environment.
 
-#### Transitioning to modern application architecture – Microservices
+#### 2. Job Market Trends & Career Development (Speaker: Mr. Nguyen Gia Hung - Job Market & Career Trends)
+* **Practical industry demands:** Modern companies no longer provide hand-holding training; they expect candidates to be ready to get straight to work. Candidates should target specific domains (such as banking & finance, AI, data, etc.) to equip themselves with relevant skills and certifications early.
+* **Cloud-First Mindset:** The trend of prioritizing cloud architectures (Cloud-first), only building on-premise hardware when the Cloud does not bring proportional value or is cost-prohibitive.
+* **AWS Commitment & Journey in Vietnam:** AWS is committed to long-term investment, infrastructure expansion, and training local talent (Local talent, infrastructure, skill & future).
+* **Career Growth Advice:**
+  * Increase personal visibility and build a strong professional network.
+  * The skills gap in the market remains significant. Since AI automatically filters CVs, having certifications and real-world side projects is a crucial advantage.
+  * Modern team collaboration operates under 3 main models: Senior + AI, teams of the same size, or larger and more diverse teams.
+  * The analogy of incandescent vs. LED bulbs: As costs decrease, human demand for technology usage increases significantly.
+  * Success formula: $Result = Value \times Visibility \times Consistency$ (Result = Value created x Visibility x Consistency).
+  * Favorite quotes: *"Treat your boss and clients like your lovers"*, *"Who is the one who owns your career?"*, and *"Your potential is limitless"*.
 
-Migrating to a modular system — each function is an **independent service** communicating via **events**, built on three core pillars:
+#### 3. Real-world Experiences of a Data Engineer (Speaker: Mr. Banh Cam Vinh - Data Engineer)
+* **Difference between University and the Workplace:**
+  * Real-world data is highly complex, non-homogeneous (different database structures), business requirements change constantly, and deadlines are extremely tight.
+  * School projects usually involve small teams and simple business logic, whereas corporate projects require complex coordination between multiple departments.
+* **Development Philosophy:** Striving for *"One framework for every platform"*.
+* **The Role of AWS in Career Development:** AWS helps engineers go beyond using a tool, enabling them to design systems for scale and build reliable architectures. With pre-built AWS tools, engineers can focus entirely on solving the core business problems. Always challenge yourself with: "Is my system architecture good enough?"
+* **3 Core Lessons:**
+  * **Connected Dots:** The ability to connect people together to solve problems.
+  * **Perseverance:** The determination to push through challenges.
+  * **Growth Mindset:** Constantly learning, developing thinking, and refusing to limit oneself.
 
-- **Queue Management**: Handle asynchronous tasks  
-- **Caching Strategy**: Optimize performance  
-- **Message Handling**: Flexible inter-service communication  
+#### 4. Workplace Psychology & Effective Communication (Speaker: Ms. Nhu Tran)
+* **Overcoming Fear:** Managing mindset when facing the fear of making mistakes. You must identify and understand exactly what you are afraid of to face it and overcome it.
+* **Effective Communication:** Always put yourself in the listener's shoes (empathy) to communicate information most effectively.
+* **Social Interaction:** Be proactive in starting conversations and connecting with others. When solving technical or business problems, always consider the feelings and experiences of others.
 
-#### Domain-Driven Design (DDD)
+#### 5. Joint Discussion
+* All speakers agreed on and highlighted the **immense impact of AI** in today's digital era, advising students to proactively integrate AI tools into their daily workflows to boost productivity.
 
-- **Four-step method**: Identify domain events → arrange timeline → identify actors → define bounded contexts  
-- **Bookstore case study**: Demonstrates real-world DDD application  
-- **Context mapping**: 7 patterns for integrating bounded contexts  
+---
 
-#### Event-Driven Architecture
+### Key Takeaways & Practical Application
 
-- **3 integration patterns**: Publish/Subscribe, Point-to-point, Streaming  
-- **Benefits**: Loose coupling, scalability, resilience  
-- **Sync vs async comparison**: Understanding the trade-offs  
-
-#### Compute Evolution
-
-- **Shared Responsibility Model**: EC2 → ECS → Fargate → Lambda  
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value  
-- **Functions vs Containers**: Criteria for appropriate choice  
-
-#### Amazon Q Developer
-
-- **SDLC automation**: From planning to maintenance  
-- **Code transformation**: Java upgrade, .NET modernization  
-- **AWS Transform agents**: VMware, Mainframe, .NET migration  
-
-### Key Takeaways
-
-#### Design Mindset
-
-- **Business-first approach**: Always start from the business domain, not the technology  
-- **Ubiquitous language**: Importance of a shared vocabulary between business and tech teams  
-- **Bounded contexts**: Identifying and managing complexity in large systems  
-
-#### Technical Architecture
-
-- **Event storming technique**: Practical method for modeling business processes  
-- Use **event-driven communication** instead of synchronous calls  
-- **Integration patterns**: When to use sync, async, pub/sub, streaming  
-- **Compute spectrum**: Criteria for choosing between VM, containers, and serverless  
-
-#### Modernization Strategy
-
-- **Phased approach**: No rushing — follow a clear roadmap  
-- **7Rs framework**: Multiple modernization paths depending on the application  
-- **ROI measurement**: Cost reduction + business agility  
-
-### Applying to Work
-
-- **Apply DDD** to current projects: Event storming sessions with business teams  
-- **Refactor microservices**: Use bounded contexts to define service boundaries  
-- **Implement event-driven patterns**: Replace some sync calls with async messaging  
-- **Adopt serverless**: Pilot AWS Lambda for suitable use cases  
-- **Try Amazon Q Developer**: Integrate into the dev workflow to boost productivity  
-
-### Event Experience
-
-Attending the **“GenAI-powered App-DB Modernization”** workshop was extremely valuable, giving me a comprehensive view of modernizing applications and databases using advanced methods and tools. Key experiences included:
-
-#### Learning from highly skilled speakers
-- Experts from AWS and major tech organizations shared **best practices** in modern application design.  
-- Through real-world case studies, I gained a deeper understanding of applying **DDD** and **Event-Driven Architecture** to large projects.  
-
-#### Hands-on technical exposure
-- Participating in **event storming** sessions helped me visualize how to **model business processes** into domain events.  
-- Learned how to **split microservices** and define **bounded contexts** to manage large-system complexity.  
-- Understood trade-offs between **synchronous and asynchronous communication** and integration patterns like **pub/sub, point-to-point, streaming**.  
-
-#### Leveraging modern tools
-- Explored **Amazon Q Developer**, an AI tool for SDLC support from planning to maintenance.  
-- Learned to **automate code transformation** and pilot serverless with **AWS Lambda** to improve productivity.  
-
-#### Networking and discussions
-- The workshop offered opportunities to exchange ideas with experts, peers, and business teams, enhancing the **ubiquitous language** between business and tech.  
-- Real-world examples reinforced the importance of the **business-first approach** rather than focusing solely on technology.  
-
-#### Lessons learned
-- Applying DDD and event-driven patterns reduces **coupling** while improving **scalability** and **resilience**.  
-- Modernization requires a **phased approach** with **ROI measurement**; rushing the process can be risky.  
-- AI tools like Amazon Q Developer can significantly **boost productivity** when integrated into the current workflow.  
-
-#### Some event photos
-*Add your event photos here*  
-
-> Overall, the event not only provided technical knowledge but also helped me reshape my thinking about application design, system modernization, and cross-team collaboration.
+* **Soft Skills:** Confidently face fears, proactively expand professional networks, and constantly practice a Growth Mindset.
+* **Communication Skills:** Practice empathetic communication, focusing on the manager and clients to deliver the highest value.
+* **Professional Development:** Focus on building practical skills through side projects, and prepare Cloud/AI certifications to confidently enter the job market. Constantly optimize systems toward reliability and scalability.

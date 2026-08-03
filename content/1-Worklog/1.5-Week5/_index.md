@@ -19,7 +19,7 @@ pre: " <b> 1.5. </b> "
 | Monday | - Perform integration testing across all functional flows of the Workshop, recording results. | 07/06/2026 | 07/06/2026 | <https://cloudjourney.awsstudygroup.com/> |
 | Tuesday | - Collect performance metrics (response times, sizes) and take screenshots for proof. | 07/07/2026 | 07/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
 | Wednesday | - Write resource clean-up documentation/scripts to delete resources when not in use. | 07/08/2026 | 07/09/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| Thursday | - Participate in the second webinar/technology event (Event 2) of the community. | 07/09/2026 | 07/09/2026 | |
+| Saturday | - Participate in the second webinar/technology event (Event 2) of the community. | 07/04/2026 | 07/04/2026 | |
 | Friday | - Re-check all resources on the AWS console to optimize costs; Work at the office. | 07/10/2026 | 07/10/2026 | |
 
 ### Week 5 Achievements:

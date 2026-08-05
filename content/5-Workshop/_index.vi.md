@@ -18,6 +18,10 @@ Hệ thống được thiết kế theo các tiêu chuẩn vận hành thực t�
 *   **Lưu trữ đám mây**: Tích hợp Amazon S3 để lưu trữ dữ liệu hình ảnh hóa đơn cho tính năng OCR.
 *   **Giám sát & Cảnh báo**: Đẩy log container trực tiếp từ Docker lên AWS CloudWatch Logs và cấu hình AWS SNS gửi cảnh báo email tự động khi backend phát sinh lỗi hệ thống.
 
+#### Liên kết tham khảo
+*   **Resource (GitHub)**: [https://github.com/nguyennhatlong2309/APP_JENIKA.git](https://github.com/nguyennhatlong2309/APP_JENIKA.git)
+*   **Production**: [https://jenkam.site](https://jenkam.site)
+
 #### Nội dung bài thực hành
 
 1. [Tổng quan về workshop](5.1-Workshop-overview/)

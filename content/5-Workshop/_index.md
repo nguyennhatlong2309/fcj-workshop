@@ -18,6 +18,10 @@ The system is deployed using production-grade practices:
 *   **Cloud Storage**: Integrates Amazon S3 to store invoice images uploaded via the OCR processing feature.
 *   **Monitoring & Alerting**: Streams container logs directly from Docker to AWS CloudWatch Logs and configures AWS SNS to send automatic email alerts when the backend encounters system errors.
 
+#### Links
+*   **Resource (GitHub)**: [https://github.com/nguyennhatlong2309/APP_JENIKA.git](https://github.com/nguyennhatlong2309/APP_JENIKA.git)
+*   **Production**: [https://jenkam.site](https://jenkam.site)
+
 #### Content
 
 1. [Workshop Overview](5.1-Workshop-overview/)

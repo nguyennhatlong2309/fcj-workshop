@@ -1,5 +1,5 @@
 baseURL = "https://nguyennhatlong2309.github.io/fcj-workshop/"
-relativeURLs = true
+relativeURLs = false
 canonifyURLs = false
 defaultContentLanguage = "en"
 

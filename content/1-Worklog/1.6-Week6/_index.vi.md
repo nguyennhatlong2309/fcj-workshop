@@ -8,21 +8,20 @@ pre: " <b> 1.6. </b> "
 
 ### Mục tiêu tuần 6:
 
-* Viết và đăng bài Blog thứ 3 (đạt chỉ tiêu 3 bài blog).
-* Bắt đầu viết tài liệu hướng dẫn kỹ thuật cho Workshop.
-* Lên văn phòng làm việc trực tiếp (Buổi 9).
+* Đóng gói Docker các thành phần (Next.js, Spring Boot, MySQL, Hermes Agent, Nginx).
+* Khởi tạo máy chủ AWS EC2, cấu hình Swap File 2GB và cài đặt Docker/Docker Compose.
 
 ### Các công việc cần triển khai trong tuần này:
 | Thứ | Công việc | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | --- | --- | --- | --- |
-| Thứ Hai | - Viết bài Blog 3 chia sẻ kinh nghiệm triển khai kiến trúc Serverless thực tế trên AWS. | 13/07/2026 | 14/07/2026 | |
-| Thứ Ba | - Đăng bài Blog 3 lên AWS Study Group và cập nhật thông tin bài viết vào Hugo. | 14/07/2026 | 14/07/2026 | |
-| Thứ Tư | - Khởi tạo phần cấu trúc chính cho tài liệu Workshop (Overview, Prerequisites). | 15/07/2026 | 15/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| Thứ Năm | - Vẽ sơ đồ kiến trúc hệ thống chính thức (Architecture Diagram) để đưa vào tài liệu. | 16/07/2026 | 16/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| Thứ Sáu | - Viết phần hướng dẫn chuẩn bị môi trường và tạo các tài nguyên nền tảng; Lên văn phòng làm việc. | 17/07/2026 | 17/07/2026 | |
+| Thứ Hai | - Viết Dockerfile cho Frontend, Backend, Hermes Agent và cấu hình tệp tin `docker-compose.yml`. | 13/07/2026 | 13/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ Ba | - Tạo máy chủ ảo AWS EC2 (t3.micro), gán Elastic IP và liên kết IAM Role (`EC2-Cafe-App-Role`). | 14/07/2026 | 14/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ Tư | - SSH vào máy chủ EC2, thiết lập Swap File 2GB (RAM ảo) để chuẩn bị RAM chạy hệ thống và cài đặt Docker. | 15/07/2026 | 15/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ Năm | - Nghiên cứu tài liệu cấu hình log driver và thiết lập Docker daemon trên môi trường EC2. | 16/07/2026 | 16/07/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| Thứ Sáu | - Chạy thử nghiệm Docker Compose các container trên máy chủ EC2, kiểm tra kết nối các container. | 17/07/2026 | 17/07/2026 | |
 
 ### Kết quả đạt được tuần 6:
 
-* Đăng bài Blog 3 thành công (hoàn thành 100% KPI Blog).
-* Xây dựng xong cấu trúc tổng quan và sơ đồ kiến trúc của tài liệu Workshop.
-* Đạt tổng cộng 9 buổi lên văn phòng.
+* Đóng gói container Docker thành công cho toàn bộ hệ thống (Frontend, Backend, Hermes, MySQL, Nginx).
+* Khởi tạo và thiết lập thành công máy chủ EC2 Free Tier kèm Swap File 2GB và Docker/Docker Compose.
+* Đạt tổng cộng 3 buổi lên văn phòng và 2 buổi tham gia hoạt động trực tiếp (Event 1 & 2) (tích lũy từ tuần trước).

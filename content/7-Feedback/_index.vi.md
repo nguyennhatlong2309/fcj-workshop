@@ -5,12 +5,6 @@ weight: 7
 chapter: false
 pre: " <b> 7. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
->Tại đây bạn có thể tự do đóng góp ý kiến cá nhân về những trải nghiệm khi tham gia chương trình First Cloud AI Journey, giúp team FCAJ cải thiện những vấn đề còn thiếu sót dựa trên các hạng mục sau:
-
 ### Đánh giá chung
 
 **1. Môi trường làm việc**  
@@ -33,12 +27,14 @@ Công ty có hỗ trợ phụ cấp thực tập và tạo điều kiện về t
 
 
 ### Một số câu hỏi khác
-- Điều bạn **hài lòng nhất** trong thời gian thực tập?  
-- Điều bạn nghĩ công ty **cần cải thiện** cho các thực tập sinh sau?  
-- Nếu giới thiệu cho bạn bè, bạn có **khuyên họ thực tập ở đây không**? Vì sao?  
+* **Điều bạn hài lòng nhất trong thời gian thực tập?**  
+  Không gian làm việc "xịn sò", một số điều nhỏ nhặt như đi thang máy không khi nào bị chờ quá 7p, anh chị hỗ trợ nhiệt tình. Khi tham gia những chương trình event, em được anh chị tâm sự, chia sẻ những câu chuyện, kinh nghiệm rất thật và rất đúng. Có quá nhiều điều cảm thấy tuyệt vời nên em không biết chọn điều nào nhất.
+* **Điều bạn nghĩ công ty cần cải thiện cho các thực tập sinh sau?**  
+  Việc mở đóng cửa đi vệ sinh thì khá rắc rối khi chỉ có 1 thẻ với cả trăm sinh viên nên em nghĩ cánh cửa đó có thể để mở luôn hoặc sẽ chuẩn bị nhiều thẻ hơn.  
+* **Nếu giới thiệu cho bạn bè, bạn có khuyên họ thực tập ở đây không? Vì sao?**  
+  Có, trải nghiệm không gian làm việc bậc nhất TPHCM, được tiếp xúc với nhiều người nổi tiếng và được chia sẻ nhiều kinh nghiệm quý báu.
 
 
-### Đề xuất & mong muốn
-- Bạn có đề xuất gì để cải thiện trải nghiệm trong kỳ thực tập?  
-- Bạn có muốn tiếp tục chương trình này trong tương lai?
-- Góp ý khác (tự do chia sẻ):
+### Lời cảm ơn
+
+Em cảm ơn anh/chị rất nhiều vì đã kiên nhẫn chỉ bảo và support em tận tình trong suốt thời gian thực tập qua. Học được từ anh/chị rất nhiều kiến thức AWS thực chiến quý giá.

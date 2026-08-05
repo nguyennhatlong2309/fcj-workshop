@@ -8,20 +8,22 @@ pre: " <b> 1.7. </b> "
 
 ### Week 7 Objectives:
 
-* Complete the step-by-step guides for the Workshop in both English and Vietnamese.
-* Add screenshots, code snippets, and detailed CLI commands.
-* Work at the office (Session 10 - completing the KPI).
+* Configure Nginx SSL, import database, and perform system integration testing on AWS.
+* Set up CloudWatch Logs and automated error notifications via AWS SNS.
+* Work at the office (Sessions 6 & 7).
 
 ### Tasks to be carried out this week:
 | Weekday | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| Monday | - Write detailed Step 1 & Step 2 for resource creation/configuration on Hugo (VI & EN). | 07/20/2026 | 07/20/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| Tuesday | - Write subsequent steps (integration, programming logic) and insert corresponding screenshots. | 07/21/2026 | 07/22/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| Wednesday | - Add sample code snippets and CLI commands for easy replication by readers. | 07/22/2026 | 07/23/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| Thursday | - Draft the system testing/validation section and the resource clean-up instructions. | 07/23/2026 | 07/24/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| Friday | - Review the entire Workshop article to ensure readability and language consistency; Work at the office. | 07/24/2026 | 07/24/2026 | |
+| Monday | - Request Let's Encrypt SSL certificate using Certbot in standalone mode on the EC2 instance. | 07/20/2026 | 07/20/2026 | |
+| Tuesday | - Configure Nginx Reverse Proxy (HTTPS) to point to the application containers. | 07/21/2026 | 07/21/2026 | |
+| Wednesday | - Import the initial database (`import_data.sql`) into the MySQL container on EC2; Work at the office. | 07/22/2026 | 07/22/2026 | |
+| Thursday | - Create SNS Topic, subscribe Email, and configure CloudWatch Metric Filter to scan for `ERROR` logs; Work at the office. | 07/23/2026 | 07/23/2026 | <https://cloudjourney.awsstudygroup.com/> |
+| Friday | - Perform integration testing of all containers on EC2 and verify logs pushed to CloudWatch. | 07/24/2026 | 07/24/2026 | |
 
 ### Week 7 Achievements:
 
-* Completed detailed bilingual step-by-step Workshop instructions.
-* Reached 10 office sessions (completed minimum KPI).
+* Successfully configured Let's Encrypt SSL and Nginx HTTPS for the application.
+* Successfully imported the database and tested system integration on AWS Cloud.
+* Successfully set up automatic log monitoring using CloudWatch Logs and email alerting via SNS.
+* Reached 5 office sessions and 2 direct event activities (Event 1 & 2) in total (accumulated from previous week).

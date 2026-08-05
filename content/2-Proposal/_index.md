@@ -5,111 +5,91 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
+# BrewMaster Pro & WEB_JENIKA (WEB_CAFE)  
+## A Comprehensive Multi-Platform Coffee Shop Management Solution (Desktop & Web) Integrated with AWS Cloud  
 
-In this section, you need to summarize the contents of the workshop that you **plan** to conduct.
+### 1. Executive Summary  
+The **BrewMaster Pro & WEB_JENIKA** project is designed to provide a comprehensive management solution for coffee shops, inventory, partners, employees, and revenue. The system integrates a desktop application (**Java Swing**) for on-site operations and a web application (**Next.js / React 19** with a **Spring Boot** backend) for remote administrators. Both platforms share a centralized MySQL database and leverage **Amazon Web Services (AWS)** (EC2, RDS, S3, CloudWatch, SNS) along with free DNS mapping via No-IP to ensure high availability, security, and low operational costs.
 
-# IoT Weather Platform for Lab Research
-## A Unified AWS Serverless Solution for Real-Time Weather Monitoring
+In particular, to diversify and elevate the technical sophistication of the project, the system leverages the massive popularity of the **Hermes Agent** repository (GitHub: [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent.git)) which currently boasts over 226k stars. Hermes Agent features the capability to learn, adapt, and grow smarter over time with usage. By utilizing free LLMs accessed through **OpenRouter**, the project configures a custom Skill for Hermes, enabling it to automatically create purchase or sales orders. Users can simply send invoice images through a configured chatbot (such as Telegram or Discord), which Hermes processes to extract data. To execute these operations securely, Hermes is granted a **special JWT (JSON Web Token)** that authorizes it to make write operations (POST requests) directly to the Spring Boot backend. Integrating this intelligent AI agent not only automates traditional manual data entry workflows but also diversifies the project architecture, showcasing the practical integration of cutting-edge AI Agent technologies.
 
-### 1. Executive Summary
-The IoT Weather Platform is designed for the ITea Lab team in Ho Chi Minh City to enhance weather data collection and analysis. It supports up to 5 weather stations, with potential scalability to 10-15, utilizing Raspberry Pi edge devices with ESP32 sensors to transmit data via MQTT. The platform leverages AWS Serverless services to deliver real-time monitoring, predictive analytics, and cost efficiency, with access restricted to 5 lab members via Amazon Cognito.
+### 2. Problem Statement  
+*Current Situation & Issues*  
+Many small coffee shops and retail outlets still manage their business data manually using **Excel** spreadsheets. This traditional approach introduces several severe challenges:
++ **Data Errors**: Manual data entry often leads to human errors in stock quantities, pricing calculations, and revenue reporting.
++ **Lack of Real-Time Sync**: Inventory, sales, and expense data are not synced in real-time across different branches or departments.
++ **Difficult Auditing**: Without a proper Activity Log, auditing transaction history and identifying revenue leakages is extremely difficult.
+- **Risk of Data Loss**: Locally stored Excel sheets are vulnerable to file corruption, malware, or hardware failures, with no automated backup mechanisms.
+- **Scalability Limitations**: Excel cannot support role-based user permissions, supplier debt tracking, or automated invoice processing using OCR technology.
 
-### 2. Problem Statement
-### What’s the Problem?
-Current weather stations require manual data collection, becoming unmanageable with multiple units. There is no centralized system for real-time data or analytics, and third-party platforms are costly and overly complex.
+*The Solution & User Requirements*  
+To overcome these issues, the system introduces dedicated features and data forms tailored to the user's operational needs:
+1. **Real-Time Dashboard**: Visualizes revenue, operational expenses, and profits using interactive charts (daily/monthly/yearly).
+2. **Sales Orders Form**: Facilitates fast customer checkout, product search, and membership discount calculations.
+3. **Purchase Orders Form**: Tracks raw materials and equipment intake, supplier debts, and transaction history.
+4. **Inventory Management Form**: Tracks real-time stock levels and trigger automated alerts when stock drops below threshold levels.
+5. **Expense Tracking Form**: Logs daily operational costs such as electricity, water bills, rent, and staff salaries.
+6. **Partner Management Form**: Manages and categorizes customer loyalty accounts and supplier details.
+7. **Staff Management & Flexible Permissions**: Oversees detailed employee information and implements a flexible role-based access control system (Admin, Manager, Cashier, Stockkeeper) to grant or restrict access to specific business forms and sensitive data.
+8. **OCR Invoice Integration with S3**: Uploads raw invoice images to Amazon S3 and uses OCR to extract invoice data for automated inventory entry.
+9. **Activity Log Management Page**: Logs and audits the complete history of operations and system actions previously performed by all users, ensuring high traceability, easier auditing, and transparency.
 
-### The Solution
-The platform uses AWS IoT Core to ingest MQTT data, AWS Lambda and API Gateway for processing, Amazon S3 for storage (including a data lake), and AWS Glue Crawlers and ETL jobs to extract, transform, and load data from the S3 data lake to another S3 bucket for analysis. AWS Amplify with Next.js provides the web interface, and Amazon Cognito ensures secure access. Similar to Thingsboard and CoreIoT, users can register new devices and manage connections, though this platform operates on a smaller scale and is designed for private use. Key features include real-time dashboards, trend analysis, and low operational costs.
+### 3. Solution Architecture  
+The platform is built on a production-ready AWS infrastructure:
+- **Client Tier**: Users access the Next.js Web App via browser or run the Java Swing Desktop App connected to the database.
+- **Application Tier (Amazon EC2)**: Hosts Nginx (Reverse Proxy & SSL), Next.js Frontend, and Spring Boot Backend inside a Docker Network via Docker Compose.
+- **Database Tier (Amazon RDS)**: Isolates the MySQL database on RDS to prevent Out-of-Memory (OOM) errors on the EC2 instance and enable automated daily backups.
+- **Storage Tier (Amazon S3)**: Provides durable and unlimited storage for OCR invoice images.
+- **Monitoring & Alerting**: Streams container logs directly to **AWS CloudWatch** using Docker's native `awslogs` driver, triggering email alerts via **AWS SNS** upon system exceptions.
 
-### Benefits and Return on Investment
-The solution establishes a foundational resource for lab members to develop a larger IoT platform, serving as a study resource, and provides a data foundation for AI enthusiasts for model training or analysis. It reduces manual reporting for each station via a centralized platform, simplifying management and maintenance, and improves data reliability. Monthly costs are $0.66 USD per the AWS Pricing Calculator, with a 12-month total of $7.92 USD. All IoT equipment costs are covered by the existing weather station setup, eliminating additional development expenses. The break-even period of 6-12 months is achieved through significant time savings from reduced manual work.
+![WEB_JENIKA Architecture](/images/5-Workshop/5.1-Workshop-overview/graph.jpeg)
 
-### 3. Solution Architecture
-The platform employs a serverless AWS architecture to manage data from 5 Raspberry Pi-based stations, scalable to 15. Data is ingested via AWS IoT Core, stored in an S3 data lake, and processed by AWS Glue Crawlers and ETL jobs to transform and load it into another S3 bucket for analysis. Lambda and API Gateway handle additional processing, while Amplify with Next.js hosts the dashboard, secured by Cognito. The architecture is detailed below:
+*AWS Services & Network Solution Used*  
+- **Amazon EC2**: Hosts the containerized application services (`t3.micro`).
+- **Amazon RDS (MySQL)**: Provides a managed database engine, ensuring high durability and automatic backups.
+- **Amazon S3**: Stores original invoice images for OCR processing.
+- **DNS Resolution (No-IP)**: Maps a free DDNS domain name to the public Elastic IP of the EC2 instance without utilizing AWS Route 53.
+- **AWS CloudWatch**: Collects logs and filters errors from the Backend container.
+- **AWS SNS**: Delivers instant email notifications to developers when errors occur.
 
-![IoT Weather Station Architecture](/images/2-Proposal/edge_architecture.jpeg)
+### 4. Technical Implementation  
+*Implementation Phases*  
+The project is divided into four key stages:
+1. **Phase 1 (Weeks 1 - 3)**: Project kickoff, research AWS services, adjust project plans, design database schemas, and initialize local development environments (boilerplates).
+2. **Phase 2 (Weeks 4 - 5)**: Develop core backend API endpoints (Spring Boot), build frontend user interfaces (Next.js), and integrate AWS SDK (S3, OCR).
+3. **Phase 3 (Weeks 6 - 7)**: Package applications via Docker, deploy containerized environments to AWS EC2, configure Nginx Reverse Proxy with SSL, import database, and set up CloudWatch Logs + AWS SNS monitoring.
+4. **Phase 4 (Weeks 8 - 9)**: Run real-world testing (Demo), collect user feedback to fix UI/UX issues, complete bilingual reports on Hugo, and submit the draft to the Mentor for approval.
 
-![IoT Weather Platform Architecture](/images/2-Proposal/platform_architecture.jpeg)
+### 5. Timeline & Milestones  
+- **Weeks 1-3**: Onboard with the company, attend Event 1, self-study AWS services, adjust project scope, design database schema, and set up local boilerplates.
+- **Weeks 4-5**: Implement core business APIs and Next.js interfaces, configure AWS SDK for S3 uploading, and integrate OCR service for raw invoices.
+- **Weeks 6-7**: Containerize application components, deploy to AWS EC2 + RDS, set up Let's Encrypt SSL via Nginx, import MySQL data, and configure CloudWatch & SNS monitoring.
+- **Weeks 8-9**: Deploy a live Demo, gather staff feedback for UI/UX enhancements, consolidate reports in bilingual format on Hugo, and submit the final draft to the Mentor.
 
-### AWS Services Used
-- **AWS IoT Core**: Ingests MQTT data from 5 stations, scalable to 15.
-- **AWS Lambda**: Processes data and triggers Glue jobs (two functions).
-- **Amazon API Gateway**: Facilitates web app communication.
-- **Amazon S3**: Stores raw data in a data lake and processed outputs (two buckets).
-- **AWS Glue**: Crawlers catalog data, and ETL jobs transform and load it.
-- **AWS Amplify**: Hosts the Next.js web interface.
-- **Amazon Cognito**: Secures access for lab users.
+### 6. Budget Estimation  
+By utilizing the **AWS Free Tier (First 12 Months)**, operational costs are minimized, as detailed in the table below:
 
-### Component Design
-- **Edge Devices**: Raspberry Pi collects and filters sensor data, sending it to IoT Core.
-- **Data Ingestion**: AWS IoT Core receives MQTT messages from the edge devices.
-- **Data Storage**: Raw data is stored in an S3 data lake; processed data is stored in another S3 bucket.
-- **Data Processing**: AWS Glue Crawlers catalog the data, and ETL jobs transform it for analysis.
-- **Web Interface**: AWS Amplify hosts a Next.js app for real-time dashboards and analytics.
-- **User Management**: Amazon Cognito manages user access, allowing up to 5 active accounts.
+| Service / Resource | Tier Applied | Cost (First 12 Months) | Cost (From Month 13) | Details / Free Limit |
+| --- | --- | --- | --- | --- |
+| **Amazon EC2** | AWS Free Tier | $0.00/month | ~$5.00/month | `t3.micro` configuration, free 750 hours/month. |
+| **Amazon RDS** | AWS Free Tier | $0.00/month | ~$3.00/month | `db.t3.micro` MySQL instance, free 750 hours/month with 20GB SSD storage. |
+| **Amazon S3** | AWS Free Tier | $0.00/month | ~$0.50/month | Free up to 5GB of storage. |
+| **AWS CloudWatch & SNS** | AWS Free Tier | $0.00/month | ~$0.50/month | Free 5GB of log ingestion and 1,000,000 email messages/month. |
+| **DNS (No-IP)** | Free Domain | $0.00/month | $0.00/month | Free DDNS domain name from No-IP for public resolution. |
+| **Total** | | **$0.00/month** | **~$9.00/month** | **100% Free for the first year.** |
 
-### 4. Technical Implementation
-**Implementation Phases**
-This project has two parts—setting up weather edge stations and building the weather platform—each following 4 phases:
-- Build Theory and Draw Architecture: Research Raspberry Pi setup with ESP32 sensors and design the AWS serverless architecture (1 month pre-internship)
-- Calculate Price and Check Practicality: Use AWS Pricing Calculator to estimate costs and adjust if needed (Month 1).
-- Fix Architecture for Cost or Solution Fit: Tweak the design (e.g., optimize Lambda with Next.js) to stay cost-effective and usable (Month 2).
-- Develop, Test, and Deploy: Code the Raspberry Pi setup, AWS services with CDK/SDK, and Next.js app, then test and release to production (Months 2-3).
+### 7. Risk Assessment  
+*Risk Matrix*  
+- **Out of Memory (OOM) on EC2**: High impact, medium probability.  
+- **Data Loss**: Critical impact, low probability.  
+- **Infrastructure Connection Issues**: Medium impact, medium probability.  
 
-**Technical Requirements**
-- Weather Edge Station: Sensors (temperature, humidity, rainfall, wind speed), a microcontroller (ESP32), and a Raspberry Pi as the edge device. Raspberry Pi runs Raspbian, handles Docker for filtering, and sends 1 MB/day per station via MQTT over Wi-Fi.
-- Weather Platform: Practical knowledge of AWS Amplify (hosting Next.js), Lambda (minimal use due to Next.js), AWS Glue (ETL), S3 (two buckets), IoT Core (gateway and rules), and Cognito (5 users). Use AWS CDK/SDK to code interactions (e.g., IoT Core rules to S3). Next.js reduces Lambda workload for the fullstack web app.
+*Mitigation & Contingency Plans*  
+- **Mitigating OOM**: Configured a **2GB Swap File** on EC2 and offloaded the database engine to **Amazon RDS MySQL**.
+- **Mitigating Data Loss**: Utilized RDS automatic daily snapshot backups and set least-privilege policies on EC2 IAM Roles.
+- **Mitigating Connectivity Errors**: Utilized Nginx reverse proxy routing with precise logs stream, and created CloudWatch Alarms to trigger SNS email alerts immediately upon Backend failures.
 
-### 5. Timeline & Milestones
-**Project Timeline**
-- Pre-Internship (Month 0): 1 month for planning and old station review.
-- Internship (Months 1-3): 3 months.
-    - Month 1: Study AWS and upgrade hardware.
-    - Month 2: Design and adjust architecture.
-    - Month 3: Implement, test, and launch.
-- Post-Launch: Up to 1 year for research.
-
-### 6. Budget Estimation
-You can find the budget estimation on the [AWS Pricing Calculator](https://calculator.aws/#/estimate?id=621f38b12a1ef026842ba2ddfe46ff936ed4ab01).  
-Or you can download the [Budget Estimation File](../attachments/budget_estimation.pdf).
-
-### Infrastructure Costs
-- AWS Services:
-    - AWS Lambda: $0.00/month (1,000 requests, 512 MB storage).
-    - S3 Standard: $0.15/month (6 GB, 2,100 requests, 1 GB scanned).
-    - Data Transfer: $0.02/month (1 GB inbound, 1 GB outbound).
-    - AWS Amplify: $0.35/month (256 MB, 500 ms requests).
-    - Amazon API Gateway: $0.01/month (2,000 requests).
-    - AWS Glue ETL Jobs: $0.02/month (2 DPUs).
-    - AWS Glue Crawlers: $0.07/month (1 crawler).
-    - MQTT (IoT Core): $0.08/month (5 devices, 45,000 messages).
-
-Total: $0.7/month, $8.40/12 months
-
-- Hardware: $265 one-time (Raspberry Pi 5 and sensors).
-
-### 7. Risk Assessment
-#### Risk Matrix
-- Network Outages: Medium impact, medium probability.
-- Sensor Failures: High impact, low probability.
-- Cost Overruns: Medium impact, low probability.
-
-#### Mitigation Strategies
-- Network: Local storage on Raspberry Pi with Docker.
-- Sensors: Regular checks and spares.
-- Cost: AWS budget alerts and optimization.
-
-#### Contingency Plans
-- Revert to manual methods if AWS fails.
-- Use CloudFormation for cost-related rollbacks.
-
-### 8. Expected Outcomes
-#### Technical Improvements: 
-Real-time data and analytics replace manual processes.  
-Scalable to 10-15 stations.
-#### Long-term Value
-1-year data foundation for AI research.  
-Reusable for future projects.
+### 8. Expected Outcomes  
+- **Digital Transformation**: Replaced manual Excel workflow with a centralized, automated, and accurate database management solution.
+- **Improved Operational Efficiency**: Reduced order checkout, purchase tracking, and accounting time by up to 70%.
+- **Reliable Data & Security**: Business data and invoice assets are secured in AWS cloud with granular access controls and periodic backups.

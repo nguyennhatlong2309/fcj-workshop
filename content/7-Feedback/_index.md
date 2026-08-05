@@ -6,12 +6,6 @@ chapter: false
 pre: " <b> 7. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
-> Here, you can freely share your personal opinions about your experience participating in the First Cloud AI Journey program. This will help the FCAJ team improve any shortcomings based on the following aspects:
-
 ### Overall Evaluation
 
 **1. Working Environment**  
@@ -35,13 +29,15 @@ The company provides an internship allowance and offers flexible working hours w
 ---
 
 ### Additional Questions
-- What did you find **most satisfying** during your internship?  
-- What do you think the company **should improve** for future interns?  
-- If recommending to a friend, would you **suggest they intern here**? Why or why not?  
+* **What did you find most satisfying during your internship?**  
+  The premium and modern workspace, even down to small details like never having to wait more than 7 minutes for the elevator, and the incredibly enthusiastic support from my colleagues. When participating in community events, I was shared very honest stories and valuable experiences. There were so many great things during this internship that I honestly cannot pick just one.
+* **What do you think the company should improve for future interns?**  
+  The access control for the restroom is somewhat inconvenient since there is only 1 access card shared among hundreds of students. I think the company could consider keeping that door open or preparing more access cards for convenience.
+* **If recommending to a friend, would you suggest they intern here? Why or why not?**  
+  Yes. It offers the experience of working in one of the best workspaces in Ho Chi Minh City, the opportunity to meet many successful people, and gain a wealth of valuable experiences.
 
 ---
 
-### Suggestions & Expectations
-- Do you have any suggestions to improve the internship experience?  
-- Would you like to continue this program in the future?  
-- Any other comments (free sharing):
+### Acknowledgments
+
+I would like to express my deepest gratitude to all of you for your patience in teaching and supporting me enthusiastically throughout my internship. I have learned a wealth of valuable, hands-on AWS knowledge from you.

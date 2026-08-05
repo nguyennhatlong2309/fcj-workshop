@@ -8,22 +8,19 @@ pre: " <b> 1.1. </b> "
 
 ### Week 1 Objectives:
 
-* Initialize personal information and set up the working environment with AWS CLI.
-* Research Workshop topics and draft the project Proposal.
-* Work at the office (Sessions 1 and 2).
+* Work at the office to get familiar with company regulations and working hours.
+* Search for team members.
+* Attend the first technical and soft skills event (Event 1) at AWS Bitexco office on Saturday.
 
 ### Tasks to be carried out this week:
 | Weekday | Task | Start Date | Completion Date | Reference Material |
 | --- | --- | --- | --- | --- |
-| Monday | - Get familiar with the environment, configure personal info on the Hugo report page. | 06/08/2026 | 06/08/2026 | |
-| Tuesday | - Research AWS services and guidelines for installing AWS CLI. | 06/09/2026 | 06/09/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| Wednesday | - Install and configure AWS CLI, verify connection to AWS account. | 06/10/2026 | 06/10/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| Thursday | - Research ideas and architecture for the Workshop topic (minimum 3 AWS services). | 06/11/2026 | 06/11/2026 | <https://cloudjourney.awsstudygroup.com/> |
-| Friday | - Draft and finalize the detailed project Proposal to submit to the Mentor; Work at the office. | 06/12/2026 | 06/12/2026 | |
+| Thursday | - Work at the office to get familiar with company regulations and working hours. | 06/11/2026 | 06/11/2026 | |
+| Saturday | - Attend the Tech & Soft Skills Sharing Session - First Cloud AI Journey (Event 1) and search for team members. | 06/13/2026 | 06/13/2026 | |
 
 ### Week 1 Achievements:
 
-* Updated personal information on the Hugo site.
-* Successfully installed and configured AWS CLI.
-* Selected a Workshop topic and completed the detailed Proposal.
-* Attended 2 office sessions.
+* Got familiar with the company regulations and office working hours.
+* Successfully looked for and connected with team members.
+* Successfully attended Event 1 and logged the event report.
+* Completed 1 office session and 1 direct event activity (Event 1).

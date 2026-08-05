@@ -6,13 +6,15 @@ chapter : false
 pre : " <b> 5.1. </b> "
 ---
 
-#### VPC endpoints
-+ **VPC endpoints** are virtual devices. They are horizontally scaled, redundant, and highly available VPC components. They allow communication between your compute resources and AWS services without imposing availability risks.
-+ Compute resources running in VPC can access  **Amazon S3**  using a Gateway endpoint. PrivateLink interface endpoints can be used by compute resources running in VPC or on-premises.
+#### WEB_JENIKA Web Platform
++ **WEB_JENIKA (WEB_CAFE)** is a comprehensive web-based coffee shop, inventory, and revenue management system. It is designed to work seamlessly alongside the **BrewMaster Pro (Java Swing Desktop App)** by sharing a single database.
++ The application features a modern, responsive user interface built using **Next.js (React 19)** with a premium **Glassmorphism** styling system, backed by a robust **Spring Boot 3.3** REST API.
 
-#### Workshop overview
-In this workshop, you will use two VPCs. 
-+ **"VPC Cloud"** is for cloud resources such as a  **Gateway endpoint** and an EC2 instance to test with. 
-+ **"VPC On-Prem"** simulates an on-premises environment such as a factory or corporate datacenter. An EC2 instance running strongSwan VPN software has been deployed in "VPC On-prem" and automatically configured to establish a Site-to-Site VPN tunnel with AWS Transit Gateway. This VPN simulates connectivity from an on-premises location to the AWS cloud. To minimize costs, only one VPN instance is provisioned to support this workshop. When planning VPN connectivity for your production workloads, AWS recommends using multiple VPN devices for high availability.
+#### Workshop Overview & Architecture
+In this workshop, you will deploy the WEB_JENIKA application on AWS using a cost-effective, scalable, and highly available hybrid cloud architecture:
++ **Amazon EC2**: Used as the application host to run containerized services (Nginx Reverse Proxy, Next.js Frontend, Spring Boot Backend, and Hermes Agent) inside a unified Docker network.
++ **Amazon RDS (MySQL)**: Provides a managed database layer that mitigates Out-of-Memory (OOM) risks by offloading data storage from the small EC2 instance.
++ **Amazon S3**: Acts as a decoupled, durable object storage service to store invoice images uploaded via the OCR processing feature.
++ **AWS CloudWatch & SNS**: Leverages Docker's native `awslogs` driver to stream backend logs directly to CloudWatch, triggering instant email notifications through SNS when exceptions occur.
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)
+![overview](/images/5-Workshop/5.1-Workshop-overview/graph.jpeg)

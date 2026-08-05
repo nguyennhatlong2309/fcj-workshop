@@ -1,99 +1,148 @@
 ---
-title : "VPC Endpoint Policies"
-date : 2024-01-01
+title : "Domain, SSL & Alerts Setup"
+date : 2024-01-01 
 weight : 5
 chapter : false
 pre : " <b> 5.5. </b> "
 ---
 
-When you create an interface or gateway endpoint, you can attach an endpoint policy to it that controls access to the service to which you are connecting. A VPC endpoint policy is an IAM resource policy that you attach to an endpoint. If you do not attach a policy when you create an endpoint, AWS attaches a default policy for you that allows full access to the service through the endpoint.
+In this section, we will configure the DDNS domain link, set up the SSL (HTTPS) certificate for the system using Certbot Let's Encrypt, and establish an automated error notification pipeline using AWS CloudWatch Logs & AWS SNS.
 
-You can create a policy that restricts access to specific S3 buckets only. This is useful if you only want certain S3 Buckets to be accessible through the endpoint.
+---
 
-In this section you will create a VPC endpoint policy that restricts access to the S3 bucket specified in the VPC endpoint policy.
+#### 1. Configure Domain and Obtain Free SSL Certificate
+The **WEB_JENIKA** platform uses the custom domain **`jenkam.site`**.
 
-![endpoint diagram](/images/5-Workshop/5.5-Policy/s3-bucket-policy.png)
+##### Execution Steps:
+1. **Link Route 53 Name Servers (NS) with Domain Registrar:**
+   * Log in to the AWS Console, search for the **Route 53** service -> Select **Hosted zones** on the left menu -> Click **Create hosted zone**.
+   * Configure settings:
+     * **Domain name**: `jenkam.site`
+   * Click **Create hosted zone**. Once successfully created, Route 53 will automatically assign a set of 4 **Name Servers (NS)** records (e.g., `ns-xxx.awsdns-xx.com`, `ns-xxx.awsdns-xx.org`, ...). Copy these 4 server addresses.
+   * Log in to the control panel of the domain registrar where you purchased `jenkam.site` (such as Namecheap, GoDaddy, etc.).
+   * Select your domain settings, find the **Name Servers** configuration -> Switch from the default to **Custom DNS (or Custom Name Servers)** and paste the 4 Route 53 NS addresses you copied. Click Save.
 
-#### Connect to an EC2 instance and verify connectivity to S3
+   ![Configure Hosted Zone Route 53](/images/5-Workshop/5.5-Policy/5.5.1_1.png)
 
-1. Start a new AWS Session Manager session on the instance named Test-Gateway-Endpoint. From the session, verify that you can list the contents of the bucket you created in Part 1: Access S3 from VPC:
+2. **Create A Records Pointing to the EC2 Instance:**
+   * Return to your hosted zone for `jenkam.site` in the Route 53 Console -> Click **Create record**.
+   * Create the A record for the root domain:
+     * **Record name**: Leave blank.
+     * **Record type**: Select `A - Routes traffic to an IPv4 address and some AWS resources`.
+     * **Value**: Enter the static Elastic IP address of your EC2 instance.
+   * Click **Create records**.
+   * Create the A record for the `www` domain: Click **Create record** -> Enter **Record name** as `www` -> Select **Record type** as `A` -> Enter the same Elastic IP address of the EC2 instance in the **Value** field -> Click **Create records**.
 
-```
-aws s3 ls s3://\<your-bucket-name\>
-```
-![test](/images/5-Workshop/5.5-Policy/test1.png)
+   ![A Records and Name Servers Configuration](/images/5-Workshop/5.5-Policy/5.5.1_2.png)
 
-The bucket contents include the two 1 GB files uploaded in earlier.
+3. **Install and Generate SSL Certificate using Certbot Let's Encrypt:**
+   * In your EC2 terminal, temporarily stop the Nginx container (as Certbot needs to bind to port 80 to verify domain ownership):
+     ```bash
+     docker stop cfe_di_rom_nginx
+     ```
+   * Install Certbot and request the SSL certificate for your domains:
+     ```bash
+     # Update packages and install Certbot
+     sudo apt update
+     sudo apt install certbot -y
 
-2. Create a new S3 bucket; follow the naming pattern you used in Part 1, but add a '-2' to the name. Leave other fields as default and click create
+     # Run Certbot in standalone mode to request certificates for both root and www domains
+     sudo certbot certonly --standalone -d jenkam.site -d www.jenkam.site
+     ```
+     *Note:* Once successfully generated, the SSL certificates will be saved in the directory `/etc/letsencrypt/live/jenkam.site/`.
 
-![create bucket](/images/5-Workshop/5.5-Policy/create-bucket.png)
 
-Successfully create bucket
 
-![Success](/images/5-Workshop/5.5-Policy/create-bucket-success.png)
+---
 
-3. Navigate to: Services > VPC > Endpoints, then select the Gateway VPC endpoint you created earlier. Click the Policy tab. Click Edit policy.
+#### 2. Configure Nginx for HTTPS (Port 443)
+Once the SSL certificate is generated, we upgrade the Nginx configuration to automatically redirect all insecure HTTP requests (port 80) to secure HTTPS (port 443).
 
-![policy](/images/5-Workshop/5.5-Policy/policy1.png)
+1. Edit the Nginx configuration file on EC2:
+   `nano ~/cafe-app/nginx/conf.d/default.conf`
+2. Replace its entire content with the following SSL configuration:
+   ```nginx
+   server {
+       listen 80;
+       server_name jenkam.site www.jenkam.site;
+       return 301 https://$host$request_uri; # Redirect HTTP to HTTPS
+   }
 
-The default policy allows access to all S3 Buckets through the VPC endpoint.
+   server {
+       listen 443 ssl;
+       server_name jenkam.site www.jenkam.site;
 
-4. In Edit Policy console, copy & Paste the following policy, then replace yourbucketname-2 with your 2nd bucket name. This policy will allow access through the VPC endpoint to your new bucket, but not any other bucket in Amazon S3. Click Save to apply the policy.
+       # Path to SSL Let's Encrypt certificates (mounted from EC2 into the container)
+       ssl_certificate /etc/letsencrypt/live/jenkam.site/fullchain.pem;
+       ssl_certificate_key /etc/letsencrypt/live/jenkam.site/privkey.pem;
 
-```
-{
-  "Id": "Policy1631305502445",
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Sid": "Stmt1631305501021",
-      "Action": "s3:*",
-      "Effect": "Allow",
-      "Resource": [
-      				"arn:aws:s3:::yourbucketname-2",
-       				"arn:aws:s3:::yourbucketname-2/*"
-       ],
-      "Principal": "*"
-    }
-  ]
-}
-```
+       ssl_protocols TLSv1.2 TLSv1.3;
+       ssl_ciphers HIGH:!aNULL:!MD5;
 
-![custom policy](/images/5-Workshop/5.5-Policy/policy2.png)
+       # Route Spring Boot Backend APIs
+       location /api/ {
+           proxy_pass http://backend:8080/api/v1/;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto $scheme;
+       }
 
-Successfully customize policy
+       # Route Next.js Frontend
+       location / {
+           proxy_pass http://frontend:3000;
+           proxy_set_header Host $host;
+           proxy_set_header X-Real-IP $remote_addr;
+           proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+           proxy_set_header X-Forwarded-Proto $scheme;
+       }
+   }
+   ```
+3. Restart the container stack to apply the new Nginx configuration:
+   ```bash
+   cd ~/cafe-app
+   docker compose up -d
+   ```
+   *You can now securely access the system at **`https://jenkam.site`**.*
 
-![success](/static/images/5-Workshop/5.5-Policy/success.png)
+---
 
-5. From your session on the Test-Gateway-Endpoint instance, test access to the S3 bucket you created in Part 1: Access S3 from VPC
-```
-aws s3 ls s3://<yourbucketname>
-```
+#### 3. Set Up Automated Error Alerts (AWS CloudWatch & SNS Alerts)
+In the `docker-compose.yml` file, the Spring Boot backend service is configured to ship its system logs directly to CloudWatch Logs under the log group `cfe-di-rom-logs`. We will now configure CloudWatch to trigger instant email alerts for developers when system errors occur.
 
-This command will return an error because access to this bucket is not permitted by your new VPC endpoint policy:
+##### Step 3.1: Create an SNS Topic for Email Notifications
+1. Navigate to the **Amazon SNS Console** -> Select **Topics** -> Click **Create topic**.
+2. Select the **Standard** type, and enter the name `cfe-di-rom-alerts`. Click **Create topic**.
+3. Click on the newly created Topic -> Click **Create subscription**.
+4. Configure the subscription settings:
+   *   **Protocol**: Select **Email**.
+   *   **Endpoint**: Enter your personal email address to receive the alerts.
+5. Click **Create subscription**.
+6. **Confirm the Subscription:** Open your email inbox, find the mail with the subject *AWS Notification - Subscription Confirmation*, and click the **Confirm Subscription** link to verify.
 
-![error](/static/images/5-Workshop/5.5-Policy/error.png)
+   ![SNS Topic Configuration](/images/5-Workshop/5.5-Policy/5.5.3_buoc3.1.png)
 
-6. Return to your home directory on your EC2 instance ` cd~ `
+##### Step 3.2: Set Up a Metric Filter on CloudWatch Logs
+1. Navigate to the **CloudWatch Console** -> Select **Log groups** on the left menu -> Click the log group **`cfe-di-rom-logs`**.
+2. Select the **Metric filters** tab -> Click **Create metric filter**.
+3. Configure the Filter:
+   *   **Filter pattern**: Enter `?ERROR ?Exception` (to match log lines containing the keywords ERROR or Exception).
+   *   **Metric name**: `BackendErrorCount`
+4. Click **Save metric filter**.
 
-+ Create a file ```fallocate -l 1G test-bucket2.xyz ```
-+ Copy file to 2nd bucket ```aws s3 cp test-bucket2.xyz s3://<your-2nd-bucket-name>```
+   ![Metric Filter Configuration](/images/5-Workshop/5.5-Policy/5.5.3_buoc3.2.png)
 
-![success](/static/images/5-Workshop/5.5-Policy/test2.png)
+##### Step 3.3: Create a CloudWatch Alarm
+1. Click on the newly created `BackendErrorCount` Metric filter -> Click **Create alarm**.
+2. Configure the Alarm conditions:
+   *   **Statistic**: Select `Sum`.
+   *   **Period**: Select `1 minute`.
+   *   **Whenever BackendErrorCount is...**: Select `Greater than or equal to 1` (alarms if 1 or more errors appear within a 1-minute window).
+3. Configure Actions:
+   *   Under **Notification**, choose the **In alarm** state trigger.
+   *   Select to send notifications to the **`cfe-di-rom-alerts`** SNS Topic created in Step 3.1.
+4. Name the Alarm `Backend-Logic-Error-Alarm` -> Click **Create alarm**.
+   *Whenever the Spring Boot backend experiences a logic error or OOM crash that triggers an ERROR log, AWS will automatically send a notification email directly to your inbox.*
 
-This operation succeeds because it is permitted by the VPC endpoint policy.
-
-![success](/static/images/5-Workshop/5.5-Policy/test2-success.png)
-
-+ Then we test access to the first bucket by copy the file to 1st bucket `aws s3 cp test-bucket2.xyz s3://<your-1st-bucket-name>`
-
-![fail](/static/images/5-Workshop/5.5-Policy/test2-fail.png)
-
-This command will return an error because access to this bucket is not permitted by your new VPC endpoint policy.
-
-#### Part 3 Summary:
-
-In this section, you created a VPC endpoint policy for Amazon S3, and used the AWS CLI to test the policy. AWS CLI actions targeted to your original S3 bucket failed because you applied a policy that only allowed access to the second bucket you created. AWS CLI actions targeted for your second bucket succeeded because the policy allowed them. These policies can be useful in situations where you need to control access to resources through VPC endpoints.
-
+   ![CloudWatch Alarm Configuration](/images/5-Workshop/5.5-Policy/5.5.3_buoc3.3.png)
 

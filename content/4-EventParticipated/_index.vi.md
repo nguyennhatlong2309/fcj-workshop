@@ -11,7 +11,7 @@ Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là
 ### [Event 1](4.1-Event1/)
 &emsp;**Tên sự kiện:** Buổi Chia sẻ Kỹ năng & Công nghệ - First Cloud AI Journey
 
-&emsp;**Thời gian:** 09:00 - 12:00 ngày 25/06/2026
+&emsp;**Thời gian:** 09:00 - 12:00 ngày 13/06/2026
 
 &emsp;**Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Tòa nhà Bitexco Financial, Số 02 Đường Hải Triều, Quận 1, TP. Hồ Chí Minh
 

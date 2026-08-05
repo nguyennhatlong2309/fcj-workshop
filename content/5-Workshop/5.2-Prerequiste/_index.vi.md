@@ -6,237 +6,114 @@ chapter : false
 pre : " <b> 5.2. </b> "
 ---
 
-#### IAM permissions
-Gắn IAM permission policy sau vào tài khoản aws user của bạn để triển khai và dọn dẹp tài nguyên trong workshop này.
-```
+#### 1. Chuẩn bị môi trường Local (Local Prerequisites)
+Để phục vụ việc build, đóng gói ứng dụng thành các Docker image và kết nối đến tài nguyên đám mây, máy tính cá nhân của bạn cần chuẩn bị sẵn các công cụ sau:
+*   **Java Development Kit (JDK) 17**: Phiên bản JDK yêu cầu để chạy ứng dụng máy tính và backend.
+*   **Apache Maven**: Dùng để quản lý thư viện và biên dịch dự án Java/Spring Boot.
+*   **Node.js (v18+)**: Để cài đặt thư viện và khởi chạy Frontend Next.js.
+*   **Git & SSH Client**: Phục vụ việc clone mã nguồn và kết nối SSH bảo mật vào máy chủ EC2.
+*   **Docker & Docker Desktop**: Dùng để build các Docker image (`helios2309/cafe-backend:latest`, `helios2309/cafe-frontend:latest`) ở local và push lên Docker Hub trước khi kéo về triển khai trên EC2.
+*   **Tài khoản Docker Hub**: Dùng để lưu trữ các Docker image của dự án (ví dụ tài khoản: `helios2309`).
+
+---
+
+#### 2. Quyền hạn IAM (IAM Permissions)
+Đảm bảo tài khoản AWS IAM User của bạn có đủ quyền hạn để tạo lập và dọn dẹp các tài nguyên trong workshop này. Hãy gắn policy sau vào tài khoản của bạn:
+
+```json
 {
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "VisualEditor0",
+            "Sid": "WebJenikaWorkshopPermissions",
             "Effect": "Allow",
             "Action": [
                 "cloudformation:*",
-                "cloudwatch:*",
-                "ec2:AcceptTransitGatewayPeeringAttachment",
-                "ec2:AcceptTransitGatewayVpcAttachment",
-                "ec2:AllocateAddress",
-                "ec2:AssociateAddress",
-                "ec2:AssociateIamInstanceProfile",
-                "ec2:AssociateRouteTable",
-                "ec2:AssociateSubnetCidrBlock",
-                "ec2:AssociateTransitGatewayRouteTable",
-                "ec2:AssociateVpcCidrBlock",
-                "ec2:AttachInternetGateway",
-                "ec2:AttachNetworkInterface",
-                "ec2:AttachVolume",
-                "ec2:AttachVpnGateway",
-                "ec2:AuthorizeSecurityGroupEgress",
-                "ec2:AuthorizeSecurityGroupIngress",
-                "ec2:CreateClientVpnEndpoint",
-                "ec2:CreateClientVpnRoute",
-                "ec2:CreateCustomerGateway",
-                "ec2:CreateDhcpOptions",
-                "ec2:CreateFlowLogs",
-                "ec2:CreateInternetGateway",
-                "ec2:CreateLaunchTemplate",
-                "ec2:CreateNetworkAcl",
-                "ec2:CreateNetworkInterface",
-                "ec2:CreateNetworkInterfacePermission",
-                "ec2:CreateRoute",
-                "ec2:CreateRouteTable",
-                "ec2:CreateSecurityGroup",
-                "ec2:CreateSubnet",
-                "ec2:CreateSubnetCidrReservation",
-                "ec2:CreateTags",
-                "ec2:CreateTransitGateway",
-                "ec2:CreateTransitGatewayPeeringAttachment",
-                "ec2:CreateTransitGatewayPrefixListReference",
-                "ec2:CreateTransitGatewayRoute",
-                "ec2:CreateTransitGatewayRouteTable",
-                "ec2:CreateTransitGatewayVpcAttachment",
-                "ec2:CreateVpc",
-                "ec2:CreateVpcEndpoint",
-                "ec2:CreateVpcEndpointConnectionNotification",
-                "ec2:CreateVpcEndpointServiceConfiguration",
-                "ec2:CreateVpnConnection",
-                "ec2:CreateVpnConnectionRoute",
-                "ec2:CreateVpnGateway",
-                "ec2:DeleteCustomerGateway",
-                "ec2:DeleteFlowLogs",
-                "ec2:DeleteInternetGateway",
-                "ec2:DeleteNetworkInterface",
-                "ec2:DeleteNetworkInterfacePermission",
-                "ec2:DeleteRoute",
-                "ec2:DeleteRouteTable",
-                "ec2:DeleteSecurityGroup",
-                "ec2:DeleteSubnet",
-                "ec2:DeleteSubnetCidrReservation",
-                "ec2:DeleteTags",
-                "ec2:DeleteTransitGateway",
-                "ec2:DeleteTransitGatewayPeeringAttachment",
-                "ec2:DeleteTransitGatewayPrefixListReference",
-                "ec2:DeleteTransitGatewayRoute",
-                "ec2:DeleteTransitGatewayRouteTable",
-                "ec2:DeleteTransitGatewayVpcAttachment",
-                "ec2:DeleteVpc",
-                "ec2:DeleteVpcEndpoints",
-                "ec2:DeleteVpcEndpointServiceConfigurations",
-                "ec2:DeleteVpnConnection",
-                "ec2:DeleteVpnConnectionRoute",
-                "ec2:Describe*",
-                "ec2:DetachInternetGateway",
-                "ec2:DisassociateAddress",
-                "ec2:DisassociateRouteTable",
-                "ec2:GetLaunchTemplateData",
-                "ec2:GetTransitGatewayAttachmentPropagations",
-                "ec2:ModifyInstanceAttribute",
-                "ec2:ModifySecurityGroupRules",
-                "ec2:ModifyTransitGatewayVpcAttachment",
-                "ec2:ModifyVpcAttribute",
-                "ec2:ModifyVpcEndpoint",
-                "ec2:ReleaseAddress",
-                "ec2:ReplaceRoute",
-                "ec2:RevokeSecurityGroupEgress",
-                "ec2:RevokeSecurityGroupIngress",
-                "ec2:RunInstances",
-                "ec2:StartInstances",
-                "ec2:StopInstances",
-                "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
-                "ec2:UpdateSecurityGroupRuleDescriptionsIngress",
-                "iam:AddRoleToInstanceProfile",
-                "iam:AttachRolePolicy",
-                "iam:CreateInstanceProfile",
-                "iam:CreatePolicy",
+                "ec2:*",
+                "s3:*",
                 "iam:CreateRole",
-                "iam:DeleteInstanceProfile",
-                "iam:DeletePolicy",
                 "iam:DeleteRole",
-                "iam:DeleteRolePolicy",
-                "iam:DetachRolePolicy",
-                "iam:GetInstanceProfile",
-                "iam:GetPolicy",
                 "iam:GetRole",
-                "iam:GetRolePolicy",
-                "iam:ListPolicyVersions",
-                "iam:ListRoles",
                 "iam:PassRole",
                 "iam:PutRolePolicy",
-                "iam:RemoveRoleFromInstanceProfile",
-                "lambda:CreateFunction",
-                "lambda:DeleteFunction",
-                "lambda:DeleteLayerVersion",
-                "lambda:GetFunction",
-                "lambda:GetLayerVersion",
-                "lambda:InvokeFunction",
-                "lambda:PublishLayerVersion",
-                "logs:CreateLogGroup",
-                "logs:DeleteLogGroup",
-                "logs:DescribeLogGroups",
-                "logs:PutRetentionPolicy",
-                "route53:ChangeTagsForResource",
-                "route53:CreateHealthCheck",
-                "route53:CreateHostedZone",
-                "route53:CreateTrafficPolicy",
-                "route53:DeleteHostedZone",
-                "route53:DisassociateVPCFromHostedZone",
-                "route53:GetHostedZone",
-                "route53:ListHostedZones",
-                "route53domains:ListDomains",
-                "route53domains:ListOperations",
-                "route53domains:ListTagsForDomain",
-                "route53resolver:AssociateResolverEndpointIpAddress",
-                "route53resolver:AssociateResolverRule",
-                "route53resolver:CreateResolverEndpoint",
-                "route53resolver:CreateResolverRule",
-                "route53resolver:DeleteResolverEndpoint",
-                "route53resolver:DeleteResolverRule",
-                "route53resolver:DisassociateResolverEndpointIpAddress",
-                "route53resolver:DisassociateResolverRule",
-                "route53resolver:GetResolverEndpoint",
-                "route53resolver:GetResolverRule",
-                "route53resolver:ListResolverEndpointIpAddresses",
-                "route53resolver:ListResolverEndpoints",
-                "route53resolver:ListResolverRuleAssociations",
-                "route53resolver:ListResolverRules",
-                "route53resolver:ListTagsForResource",
-                "route53resolver:UpdateResolverEndpoint",
-                "route53resolver:UpdateResolverRule",
-                "s3:AbortMultipartUpload",
-                "s3:CreateBucket",
-                "s3:DeleteBucket",
-                "s3:DeleteObject",
-                "s3:GetAccountPublicAccessBlock",
-                "s3:GetBucketAcl",
-                "s3:GetBucketOwnershipControls",
-                "s3:GetBucketPolicy",
-                "s3:GetBucketPolicyStatus",
-                "s3:GetBucketPublicAccessBlock",
-                "s3:GetObject",
-                "s3:GetObjectVersion",
-                "s3:GetBucketVersioning",
-                "s3:ListAccessPoints",
-                "s3:ListAccessPointsForObjectLambda",
-                "s3:ListAllMyBuckets",
-                "s3:ListBucket",
-                "s3:ListBucketMultipartUploads",
-                "s3:ListBucketVersions",
-                "s3:ListJobs",
-                "s3:ListMultipartUploadParts",
-                "s3:ListMultiRegionAccessPoints",
-                "s3:ListStorageLensConfigurations",
-                "s3:PutAccountPublicAccessBlock",
-                "s3:PutBucketAcl",
-                "s3:PutBucketPolicy",
-                "s3:PutBucketPublicAccessBlock",
-                "s3:PutObject",
-                "secretsmanager:CreateSecret",
-                "secretsmanager:DeleteSecret",
-                "secretsmanager:DescribeSecret",
-                "secretsmanager:GetSecretValue",
-                "secretsmanager:ListSecrets",
-                "secretsmanager:ListSecretVersionIds",
-                "secretsmanager:PutResourcePolicy",
-                "secretsmanager:TagResource",
-                "secretsmanager:UpdateSecret",
-                "sns:ListTopics",
-                "ssm:DescribeInstanceProperties",
-                "ssm:DescribeSessions",
-                "ssm:GetConnectionStatus",
-                "ssm:GetParameters",
-                "ssm:ListAssociations",
-                "ssm:ResumeSession",
-                "ssm:StartSession",
-                "ssm:TerminateSession"
+                "iam:DeleteRolePolicy",
+                "iam:GetRolePolicy",
+                "logs:*",
+                "cloudwatch:*",
+                "sns:*",
+                "route53:*"
             ],
             "Resource": "*"
         }
     ]
 }
-
 ```
 
-#### Khởi tạo tài nguyên bằng CloudFormation
+---
 
-Trong lab này, chúng ta sẽ dùng N.Virginia region (us-east-1).
+#### 3. Khởi tạo tài nguyên hạ tầng bằng AWS Console
+Vì toàn bộ hệ thống (Next.js Frontend, Spring Boot Backend, MySQL Database và Nginx) được triển khai chung trên một máy chủ ảo EC2 duy nhất bằng Docker Compose, chúng ta sẽ tận dụng **Mạng VPC mặc định (Default VPC)** có sẵn của tài khoản AWS và tạo thủ công các tài nguyên bổ trợ sau:
 
-Để chuẩn bị cho môi trường làm workshop, chúng ta deploy CloudFormation template sau (click link): [PrivateLinkWorkshop ](https://us-east-1.console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://s3.us-east-1.amazonaws.com/reinvent-endpoints-builders-session/Nested.yaml&stackName=PLCloudSetup). Để nguyên các lựa chọn mặc định.
+##### 3.1. Khởi tạo Security Group cho EC2 (`web-app-sg`)
+Để cho phép truy cập web và SSH kết nối từ xa:
+1. Đăng nhập vào AWS Management Console, chuyển vùng sang **Sydney (`ap-southeast-2`)**.
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack1.png)
+   ![Cấu hình Security Group](/images/5-Workshop/5.2-Prerequisite/5.2_3.1.1.png)
 
-+ Lựa chọn 2 mục acknowledgement 
-+ Chọn Create stack
+2. Tìm kiếm dịch vụ **EC2** -> Chọn **Security Groups** ở thanh bên trái -> Click **Create security group**.
+3. Cấu hình thông tin cơ bản:
+   * **Security group name**: `web-app-sg`
+   * **Description**: `Allow SSH, HTTP, and HTTPS access to EC2`
+   * **VPC**: Chọn **VPC mặc định (Default VPC)** của phân vùng Sydney.
+4. Tại mục **Inbound rules** (Quy tắc đầu vào), thêm 3 quy tắc sau:
+   * **Quy tắc 1**: Type `SSH` (Cổng 22) -> Source: Chọn `My IP` (hoặc `Anywhere-IPv4` - `0.0.0.0/0` để kết nối từ bất kỳ mạng nào).
+   * **Quy tắc 2**: Type `HTTP` (Cổng 80) -> Source: Chọn `Anywhere-IPv4` (`0.0.0.0/0`).
+   * **Quy tắc 3**: Type `HTTPS` (Cổng 443) -> Source: Chọn `Anywhere-IPv4` (`0.0.0.0/0`).
+5. Cuộn xuống và click **Create security group**. Ghi lại ID của Security Group mới tạo (ví dụ: `sg-0123456789abcdef0`).
 
-![create stack](/images/5-Workshop/5.2-Prerequisite/create-stack2.png)
+   ![Cấu hình Quy tắc đầu vào](/images/5-Workshop/5.2-Prerequisite/5.2_3.1.234.png)
 
-Quá trình triển khai CloudFormation cần khoảng 15 phút để hoàn thành.
 
-![complete](/images/5-Workshop/5.2-Prerequisite/complete.png)
+##### 3.2. Khởi tạo Amazon S3 Bucket (`jenkam-images`)
+Để lưu trữ các tệp tin hình ảnh hóa đơn phục vụ tính năng OCR:
+1. Tìm kiếm và chọn dịch vụ **S3** trên AWS Console -> Click **Create bucket**.
+2. Thiết lập thông tin:
+   * **Bucket name**: Đặt tên duy nhất toàn cầu (ví dụ: `jenkam-images`).
+   * **AWS Region**: Chọn **ap-southeast-2** (Sydney) để cùng vùng với máy chủ EC2.
+3. Phần **Block Public Access settings for this bucket**: Giữ tùy chọn mặc định **Block all public access** để bảo mật dữ liệu nội bộ.
+4. Cuộn xuống cuối trang và click **Create bucket**.
+5. **Khởi tạo cấu trúc thư mục (Folders):**
+   * Truy cập vào bucket `jenkam-images` vừa tạo -> Click **Create folder**.
+   * Tạo thư mục thứ nhất: Tên là `invoices` (để lưu trữ ảnh hóa đơn lâu dài). Click **Create folder**.
+   * Tạo thư mục thứ hai: Tên là `temp` (để lưu trữ các tệp tạm thời trong quá trình xử lý OCR). Click **Create folder**.
 
-+ 2 VPCs đã được tạo
+   ![Cấu hình Thư mục S3](/images/5-Workshop/5.2-Prerequisite/5.2_3.2.12345.png)
 
-![vpcs](/images/5-Workshop/5.2-Prerequisite/vpcs.png)
+6. **Cấu hình Quy tắc vòng đời (Lifecycle Rule) cho thư mục `temp`:**
+   Để tự động dọn dẹp các tệp ảnh tạm thời nhằm tối ưu dung lượng và chi phí:
+   * Chuyển sang tab **Management** của bucket -> Tại mục **Lifecycle rules**, click **Create lifecycle rule**.
+   * Cấu hình quy tắc:
+     * **Lifecycle rule name**: `CleanTempFolder`
+     * **Rule scope**: Chọn **Limit the scope of this rule using one or more filters**.
+     * **Prefix**: Nhập `temp/` (lưu ý có dấu gạch chéo `/` ở cuối để áp dụng riêng cho các đối tượng trong thư mục `temp`).
+     * **Lifecycle rule actions**: Tích chọn **Expire current versions of objects**.
+     * **Expire current versions of objects**: Tại ô **Days after object creation**, điền `1` ngày (hệ thống sẽ tự động xóa các file tạm trong thư mục `temp` sau 24 giờ kể từ khi tải lên).
+   * Click **Create rule** để hoàn tất.
 
-+ 3 EC2s đã được tạo
+   ![Cấu hình Quy tắc vòng đời S3](/images/5-Workshop/5.2-Prerequisite/5.2_3.2.6.png)
 
-![EC2](/images/5-Workshop/5.2-Prerequisite/ec2.png)
+
+
+##### 3.3. Khởi tạo IAM Role cho EC2 (`WebJenika-EC2-Role`)
+Cấp quyền bảo mật để EC2 giao tiếp với S3 và đẩy log Docker trực tiếp lên CloudWatch Logs:
+1. Tìm kiếm dịch vụ **IAM** trên AWS Console -> Chọn **Roles** ở thanh bên trái -> Click **Create role**.
+2. Chọn loại thực thể tin cậy (**Trusted entity type**): **AWS service** -> Chọn case sử dụng (**Use case**): **EC2**. Click **Next**.
+3. Tại phần **Add permissions** (Thêm quyền hạn), tìm kiếm và tích chọn hai chính sách bảo mật sau:
+   * `AmazonS3FullAccess` (hoặc tạo Custom Policy chỉ cho phép thao tác trên bucket `jenkam-images`).
+   * `CloudWatchLogsFullAccess` (cho phép đẩy logs của Docker backend lên CloudWatch).
+4. Nhấn **Next**. Thiết lập thông tin định danh:
+   * **Role name**: `WebJenika-EC2-Role`
+5. Nhấn **Create role** để hoàn thành. Hệ thống sẽ tự động tạo một **Instance Profile** cùng tên để bạn gán vào máy chủ EC2 khi khởi tạo.
+
+   ![Cấu hình IAM Role cho EC2](/images/5-Workshop/5.2-Prerequisite/5.2_3.3.png)
+

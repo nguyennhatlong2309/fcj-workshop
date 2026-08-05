@@ -11,7 +11,7 @@ pre: " <b> 4.1. </b> "
 ### Event Details
 
 * **Event Name:** Tech & Soft Skills Sharing Session - First Cloud AI Journey
-* **Date & Time:** 09:00 - 12:00, June 25, 2026
+* **Date & Time:** 09:00 - 12:00, June 13, 2026
 * **Location:** AWS Vietnam Office, 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, District 1, Ho Chi Minh City
 * **Role:** Attendee
 

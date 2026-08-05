@@ -11,7 +11,7 @@ During my internship, I participated in two events. Each one was a memorable exp
 ### [Event 1](4.1-Event1/)  
 &emsp;**Event Name:** Tech & Soft Skills Sharing Session - First Cloud AI Journey  
 
-&emsp;**Date & Time:** 09:00 - 12:00, June 25, 2026  
+&emsp;**Date & Time:** 09:00 - 12:00, June 13, 2026  
 
 &emsp;**Location:** AWS Vietnam Office, 26th Floor, Bitexco Financial Tower, 02 Hai Trieu Street, District 1, Ho Chi Minh City  
 

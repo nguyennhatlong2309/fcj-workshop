@@ -6,28 +6,23 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# Triển khai hệ thống WEB_JENIKA trên đám mây AWS
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+Trong workshop này, chúng ta sẽ học cách triển khai thực tế hệ thống quản lý quán cà phê **WEB_JENIKA (CAFE_DI_ROM)** lên nền tảng đám mây **Amazon Web Services (AWS)**. Đây là một bài thực hành hướng dẫn quy trình đóng gói ứng dụng bằng Docker và chạy trên một máy chủ ảo EC2 duy nhất (sử dụng mạng Default VPC của AWS để tối ưu chi phí trong gói Free Tier). 
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Hệ thống được thiết kế theo các tiêu chuẩn vận hành thực tế bao gồm:
+*   **Reverse Proxy & SSL**: Sử dụng Nginx làm reverse proxy và Certbot Let's Encrypt cấp chứng chỉ bảo mật cho tên miền (`jenkam.site`).
+*   **Bảo mật IAM**: Sử dụng IAM Instance Profile gắn quyền cho EC2 thay vì lưu trữ cứng credentials.
+*   **Lưu trữ đám mây**: Tích hợp Amazon S3 để lưu trữ dữ liệu hình ảnh hóa đơn cho tính năng OCR.
+*   **Giám sát & Cảnh báo**: Đẩy log container trực tiếp từ Docker lên AWS CloudWatch Logs và cấu hình AWS SNS gửi cảnh báo email tự động khi backend phát sinh lỗi hệ thống.
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
-
-#### Nội dung
+#### Nội dung bài thực hành
 
 1. [Tổng quan về workshop](5.1-Workshop-overview/)
-2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
+2. [Các bước chuẩn bị](5.2-Prerequiste/)
+3. [Khởi tạo EC2 và thiết lập môi trường](5.3-S3-vpc/)
+4. [Triển khai Docker Compose & Cơ sở dữ liệu](5.4-S3-onprem/)
+5. [Cấu hình Tên miền, SSL & Cảnh báo lỗi tự động](5.5-Policy/)
 6. [Dọn dẹp tài nguyên](5.6-Cleanup/)

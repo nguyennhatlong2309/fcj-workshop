@@ -11,7 +11,7 @@ pre: " <b> 4.1. </b> "
 ### Thông tin sự kiện
 
 * **Tên sự kiện:** Buổi Chia sẻ Kỹ năng & Công nghệ - First Cloud AI Journey
-* **Thời gian:** 09:00 - 12:00, ngày 25/06/2026
+* **Thời gian:** 09:00 - 12:00, ngày 13/06/2026
 * **Địa điểm:** Văn phòng AWS Việt Nam, Tầng 26, Tòa nhà Bitexco Financial, Số 02 Đường Hải Triều, Quận 1, TP. Hồ Chí Minh
 * **Vai trò:** Người tham dự
 

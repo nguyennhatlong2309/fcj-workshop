@@ -1,0 +1,8 @@
+{{- $url := .Destination -}}
+{{- if not (or (hasPrefix $url "http://") (hasPrefix $url "https://")) -}}
+  {{- if hasPrefix $url "/" -}}
+    {{- $url = strings.TrimPrefix "/" $url -}}
+  {{- end -}}
+  {{- $url = $url | relURL -}}
+{{- end -}}
+<img src="{{ $url }}" alt="{{ .Text }}" {{ with .Title }}title="{{ . }}"{{ end }} />

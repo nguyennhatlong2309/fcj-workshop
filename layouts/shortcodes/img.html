@@ -1,3 +1,7 @@
 {{- $src := .Get "src" -}}
+{{- if hasPrefix $src "/" -}}
+  {{- $src = strings.TrimPrefix "/" $src -}}
+{{- end -}}
 {{- $alt := .Get "alt" | default "" -}}
-<img src="{{ $src | relURL }}" alt="{{ $alt }}" style="max-width:100%;height:auto;" />
+{{- $style := .Get "style" | default "max-width:100%;height:auto;" -}}
+<img src="{{ $src | relURL }}" alt="{{ $alt }}" style="{{ $style | safeCSS }}" />

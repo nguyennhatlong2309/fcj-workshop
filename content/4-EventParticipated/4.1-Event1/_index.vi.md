@@ -60,13 +60,13 @@ Trong buổi chia sẻ, em đã được lắng nghe những chia sẻ quý báu
 
 <div style="display: flex; flex-direction: column; gap: 10px; align-items: center; margin: 20px 0;">
   <div style="display: flex; gap: 10px; justify-content: center; width: 100%;">
-    <img src="/images/even1/z7965897302643_56efab19eed7a36958ad0b9b592c8b69.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 1">
-    <img src="/images/even1/z7965897354595_b7f1fbd4b92c53f5305cd376092e4cd3.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 2">
-    <img src="/images/even1/z7965897408282_66543b801c3350c2f63902847532a116.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 3">
+    {{< img src="/images/even1/z7965897302643_56efab19eed7a36958ad0b9b592c8b69.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 1" >}}
+    {{< img src="/images/even1/z7965897354595_b7f1fbd4b92c53f5305cd376092e4cd3.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 2" >}}
+    {{< img src="/images/even1/z7965897408282_66543b801c3350c2f63902847532a116.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 3" >}}
   </div>
   <div style="display: flex; gap: 10px; justify-content: center; width: 100%;">
-    <img src="/images/even1/z7965897462722_ac2c6fa441266ea86ac98ba45fc83fcb.jpg" style="flex: 1; max-width: 49.5%; min-width: 0; object-fit: cover; aspect-ratio: 16/10; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 4">
-    <img src="/images/even1/z7965897514599_f10ce035d2f253e2e55644bb44bcc29d.jpg" style="flex: 1; max-width: 49.5%; min-width: 0; object-fit: cover; aspect-ratio: 16/10; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 5">
+    {{< img src="/images/even1/z7965897462722_ac2c6fa441266ea86ac98ba45fc83fcb.jpg" style="flex: 1; max-width: 49.5%; min-width: 0; object-fit: cover; aspect-ratio: 16/10; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 4" >}}
+    {{< img src="/images/even1/z7965897514599_f10ce035d2f253e2e55644bb44bcc29d.jpg" style="flex: 1; max-width: 49.5%; min-width: 0; object-fit: cover; aspect-ratio: 16/10; border-radius: 8px; border: 1px solid #ddd;" alt="Hình ảnh Event 5" >}}
   </div>
   <p style="text-align: center; font-style: italic; color: #555; margin-top: 5px; font-size: 0.95em;">Một số hình ảnh về event</p>
 </div>

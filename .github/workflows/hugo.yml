@@ -6,17 +6,26 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout source code
         uses: actions/checkout@v4
         with:
           submodules: recursive
+
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v4
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
@@ -27,10 +36,19 @@ jobs:
       - name: Build website
         run: hugo --minify
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
-          publish_branch: gh-pages # <- đảm bảo đúng tên nhánh bạn dùng để deploy
-          force_orphan: true # <- đảm bảo xóa lịch sử cũ ở nhánh gh-pages (giảm lỗi)
+          path: ./public
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+

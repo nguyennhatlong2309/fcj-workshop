@@ -24,9 +24,9 @@ The system is deployed using production-grade practices:
 
 #### Content
 
-1. [Workshop Overview](5.1-Workshop-overview/)
-2. [Prerequisites](5.2-Prerequiste/)
-3. [EC2 Launch & Environment Setup](5.3-S3-vpc/)
-4. [Deploy Docker Compose & Database](5.4-S3-onprem/)
-5. [Domain, SSL & Alerts Setup](5.5-Policy/)
-6. [Resource Cleanup](5.6-Cleanup/)
+1. [Workshop Overview](5.1-workshop-overview/)
+2. [Prerequisites](5.2-prerequiste/)
+3. [EC2 Launch & Environment Setup](5.3-s3-vpc/)
+4. [Deploy Docker Compose & Database](5.4-s3-onprem/)
+5. [Domain, SSL & Alerts Setup](5.5-policy/)
+6. [Resource Cleanup](5.6-cleanup/)

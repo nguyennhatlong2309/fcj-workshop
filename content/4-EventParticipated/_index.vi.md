@@ -8,7 +8,7 @@ pre: " <b> 4. </b> "
 
 Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là những món quà và những khoảnh khắc rất tuyệt vời.
 
-### [Event 1](4.1-Event1/)
+### [Event 1](4.1-event1/)
 &emsp;**Tên sự kiện:** Buổi Chia sẻ Kỹ năng & Công nghệ - First Cloud AI Journey
 
 &emsp;**Thời gian:** 09:00 - 12:00 ngày 13/06/2026
@@ -17,7 +17,7 @@ Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là
 
 &emsp;**Vai trò trong sự kiện:** Người tham dự 
 
-### [Event 2](4.2-Event2/)
+### [Event 2](4.2-event2/)
 &emsp;**Tên sự kiện:** Buổi chia sẻ Định hướng Nghề nghiệp & Xu hướng Thị trường Lao động - First Cloud AI Journey
 
 &emsp;**Thời gian:** 09:00 - 12:00 ngày 04/07/2026

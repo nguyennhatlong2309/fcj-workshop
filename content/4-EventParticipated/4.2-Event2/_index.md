@@ -62,3 +62,21 @@ During this sharing session, I had the opportunity to listen to real-world stori
 * **Soft Skills:** Confidently face fears, proactively expand professional networks, and constantly practice a Growth Mindset.
 * **Communication Skills:** Practice empathetic communication, focusing on the manager and clients to deliver the highest value.
 * **Professional Development:** Focus on building practical skills through side projects, and prepare Cloud/AI certifications to confidently enter the job market. Constantly optimize systems toward reliability and scalability.
+
+---
+
+### Event Photos
+
+<div style="display: flex; flex-direction: column; gap: 10px; align-items: center; margin: 20px 0;">
+  <div style="display: flex; gap: 10px; justify-content: center; width: 100%;">
+    <img src="/images/even2/z8008137990451_abb0dc82077406cb0ef46c1b20d44e10.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Event Photo 1">
+    <img src="/images/even2/z8008137995709_62cff50c8f42cf991a166afd9059b5a9.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Event Photo 2">
+    <img src="/images/even2/z8008138007576_39ee91ae2173e8ebba7cb0fe5b76b9ac.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Event Photo 3">
+  </div>
+  <div style="display: flex; gap: 10px; justify-content: center; width: 100%;">
+    <img src="/images/even2/z8008138016598_1b4ac26134840a892c8732ac024143cd.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Event Photo 4">
+    <img src="/images/even2/z8008138025387_dbc0521912e5c8798b0bbfb3ac1287df.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Event Photo 5">
+    <img src="/images/even2/z8008138025682_e354bfc3f20bc3796d2c9f458604d281.jpg" style="flex: 1; min-width: 0; object-fit: cover; aspect-ratio: 4/3; border-radius: 8px; border: 1px solid #ddd;" alt="Event Photo 6">
+  </div>
+  <p style="text-align: center; font-style: italic; color: #555; margin-top: 5px; font-size: 0.95em;">Some photos of the event</p>
+</div>

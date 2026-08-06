@@ -1,21 +1,10 @@
----
-title: "Ý tưởng kết hợp AWS CLI & Hermes Agent"
-date: 2024-01-01
-weight: 2
-chapter: false
-pre: " <b> 3.2. </b> "
----
-
 # Ý tưởng kết hợp AWS CLI & Hermes Agent: Đưa AI vào quản trị Cloud bằng ngôn ngữ tự nhiên
-
-> \*Bài viết gốc trên Facebook: [AWS Study Group - Blog 2](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2236254263806200/?rdid=98lGo4WwJK4aSNns#)\*
 
 Khi việc cấu hình hạ tầng AWS qua giao diện Web Console trở nên nhàm chán, và việc ghi nhớ hàng trăm câu lệnh AWS CLI phức tạp bắt đầu làm khó các nhà phát triển, một câu hỏi thú vị được đặt ra: *Liệu ta có thể giao tiếp với đám mây bằng chính ngôn ngữ tự nhiên của mình?*
 
 Dưới đây là một phác thảo kế hoạch kết hợp **AWS CLI** và **Hermes Agent** - biến AI thành một "trợ lý DevOps" điều khiển hạ tầng bằng ngôn ngữ tự nhiên. Bài viết này được chia sẻ dưới dạng đề xuất thảo luận, rất mong nhận được những góp ý, kinh nghiệm và góc nhìn từ các anh em lập trình viên và kỹ sư hệ thống!
 
 ---
-{{< img src="/images/Blog2.png" alt="AWS CLI & Hermes Integration" >}}
 
 ## 1. Giới thiệu sơ lược về hai công nghệ
 

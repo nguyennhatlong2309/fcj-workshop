@@ -27,3 +27,4 @@ pre: " <b> 1.3. </b> "
 * Selected a new project topic and finalized real-world requirements for CAFE_DI_ROM.
 * Successfully set up local project boilerplates for Frontend Next.js, Backend Spring Boot, and MySQL.
 * Reached 2 office sessions and 1 direct event activity (Event 1) in total (accumulated from previous week).
+    

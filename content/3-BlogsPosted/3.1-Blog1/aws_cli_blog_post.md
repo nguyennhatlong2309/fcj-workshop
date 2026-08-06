@@ -1,14 +1,4 @@
----
-title: "AWS CLI là gì? Hướng dẫn toàn diện từ A-Z"
-date: 2024-01-01
-weight: 1
-chapter: false
-pre: " <b> 3.1. </b> "
----
-
 # AWS CLI là gì? Hướng dẫn toàn diện từ A-Z cho Developer và DevOps
-
-> \*Bài viết gốc trên Facebook: [AWS Study Group - Blog 1](https://www.facebook.com/groups/660548818043427/?multi_permalinks=2236217517143208&ref=share)\*
 
 Khi làm việc với Amazon Web Services (AWS), hầu hết chúng ta đều bắt đầu với **AWS Management Console** - giao diện web trực quan của AWS. Tuy nhiên, việc click chuột qua lại giữa các menu để tạo máy chủ EC2, kiểm tra bucket S3 hay cấu hình phân quyền IAM sẽ sớm trở thành một "cơn ác mộng" khi dự án của bạn phình to. 
 
@@ -17,7 +7,7 @@ Khi làm việc với Amazon Web Services (AWS), hầu hết chúng ta đều b�
 Trong bài viết này, chúng ta sẽ cùng khám phá sức mạnh của AWS CLI (đặc biệt là phiên bản **AWS CLI v2**), cách cài đặt, cấu hình và những câu lệnh thực tế mà bất kỳ kỹ sư cloud nào cũng cần biết!
 
 ---
-{{< img src="/images/Blog1.png" alt="AWS CLI" >}}
+![alt text](image.png)
 ## 1. AWS CLI v2 Có Gì Mới Và Vượt Trội?
 
 AWS CLI v2 là phiên bản nâng cấp lớn và là phiên bản mặc định hiện tại được AWS khuyên dùng. So với v1, phiên bản này mang lại nhiều cải tiến đáng giá:
@@ -35,7 +25,7 @@ AWS CLI v2 là phiên bản nâng cấp lớn và là phiên bản mặc định
 
 Về cơ bản, AWS CLI hoạt động như một lớp wrapper (bao bọc) phía trên **AWS SDK**. 
 
-### Sơ đồ Mermaid:
+### Sơ đồ Mermaid (Hiển thị trực tiếp trên GitHub/Markdown editor):
 ```mermaid
 graph TD
     A[User Terminal / Shell Script] -->|Gõ câu lệnh AWS CLI| B(AWS CLI Engine)
@@ -46,7 +36,7 @@ graph TD
     B -->|In kết quả JSON/YAML/Table| A
 ```
 
-### Sơ đồ Diagram-as-Code bằng Eraser.io:
+### Sơ đồ Diagram-as-Code bằng Eraser.io (Sao chép vào Eraser.io để chỉnh sửa):
 ```text
 // Định nghĩa các Nhóm (Groups) và Node
 Local_Machine [label: "Máy người dùng (Local Machine)", color: blue] {
@@ -141,10 +131,11 @@ Sau đó làm theo trình hướng dẫn trên terminal để mở trình duyệ
 
 ## 5. Những Lệnh AWS CLI Thực Tế Mà Lập Trình Viên Cần Biết
 
-Cú pháp chung của AWS CLI cực kỳ nhất quan:
+Cú pháp chung của AWS CLI cực kỳ nhất quán:
 ```bash
 aws <service> <operation> [options]
 ```
+
 Dưới đây là một số lệnh phổ biến nhất được chia theo dịch vụ:
 
 ### 📁 Quản lý Amazon S3 (Lưu trữ file)

@@ -15,5 +15,5 @@ A detailed introduction to AWS CLI v2, its underlying operational architecture, 
 ###  [Blog 2 - Combining AWS CLI & Hermes Agent](3.2-blog2/) — [Facebook Post](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2236254263806200/?rdid=98lGo4WwJK4aSNns#)
 A proposal to integrate AWS CLI with the open-source Hermes Agent framework by Nous Research to create a DevOps assistant capable of managing cloud infrastructure using natural language via chatbots.
 
-###  [Blog 3 - ...](3.3-blog3/)
-This blog introduces the newly added session policies feature in Amazon EKS Pod Identity, which allows you to narrow IAM permissions flexibly and precisely for each pod without needing to create multiple separate IAM roles. This is an important step forward that helps apply the principle of least privilege more effectively in large-scale Kubernetes environments.
+###  [Blog 3 - Session Policies in Amazon EKS Pod Identity](3.3-blog3/) — [Facebook Post](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2237000000000000/)
+An introduction to the session policies feature in Amazon EKS Pod Identity, explaining how to dynamically scope down IAM permissions for Kubernetes pods to enforce the principle of least privilege at scale while avoiding IAM role sprawl.

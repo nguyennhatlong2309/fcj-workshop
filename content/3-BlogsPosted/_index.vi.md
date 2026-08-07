@@ -15,5 +15,5 @@ Bài viết giới thiệu chi tiết về AWS CLI v2, kiến trúc hoạt độ
 ###  [Blog 2 - Ý tưởng kết hợp AWS CLI & Hermes Agent](3.2-blog2/) — [Bài viết trên Facebook](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2236254263806200/?rdid=98lGo4WwJK4aSNns#)
 Đề xuất kế hoạch tích hợp công cụ dòng lệnh AWS CLI với khung AI Agent (Hermes Agent) của Nous Research nhằm tạo ra một trợ lý DevOps có khả năng điều khiển hạ tầng đám mây bằng ngôn ngữ tự nhiên thông qua các chatbot.
 
-###  [Blog 3 - ...](3.3-blog3/)
-Blog này giới thiệu Amazon EKS Pod Identity vừa bổ sung tính năng session policies, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
+###  [Blog 3 - Session Policies trong Amazon EKS Pod Identity](3.3-blog3/) — [Bài viết trên Facebook](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2237000000000000/)
+Bài viết giới thiệu tính năng session policies trong Amazon EKS Pod Identity, giúp thu hẹp quyền truy cập IAM cho các pod một cách động và linh hoạt nhằm tuân thủ nguyên tắc đặc quyền tối thiểu (least privilege) mà không gây tràn lan số lượng IAM roles.

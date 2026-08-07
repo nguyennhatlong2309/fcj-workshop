@@ -1,20 +1,9 @@
----
-title: "Session Policies trong Amazon EKS Pod Identity"
-date: 2024-01-01
-weight: 3
-chapter: false
-pre: " <b> 3.3. </b> "
----
-
 # Session Policies trong Amazon EKS Pod Identity: Thu hẹp quyền động và tinh gọn kiểm soát truy cập
 
 Amazon EKS Pod Identity vừa bổ sung tính năng **session policies**, cho phép bạn thu hẹp quyền IAM một cách linh hoạt và chính xác cho từng pod mà không cần tạo thêm nhiều IAM roles riêng biệt. Đây là bước tiến quan trọng giúp áp dụng nguyên tắc least privilege (đặc quyền tối thiểu) hiệu quả hơn trong môi trường Kubernetes quy mô lớn.
 
-> \*Bài viết gốc trên Facebook: [AWS Study Group - Blog 3](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2237000000000000/)\*
-
 ---
-
-{{< img src="/images/Blog3.png" alt="Session Policies trong Amazon EKS Pod Identity" >}}
+![alt text](blog3.png)
 
 ## 1. Cơ chế hoạt động của Session Policies trong EKS Pod Identity
 
@@ -105,9 +94,8 @@ aws eks create-pod-identity-association \
 
 Mặc dù rất mạnh mẽ, session policies cũng có những giới hạn kiến trúc cần lưu ý:
 
-> [!WARNING]
-> **Lỗi PackedPolicyTooLarge**
-> AWS EKS Pod Identity nén các chính sách session inline, ARN của managed policy và các nhãn session (session tags) thành một định dạng nhị phân có giới hạn dung lượng. Nếu tổng dung lượng metadata này vượt quá giới hạn, API sẽ báo lỗi `PackedPolicyTooLarge`.
+### Lỗi PackedPolicyTooLarge
+AWS EKS Pod Identity nén các chính sách session inline, ARN của managed policy và các nhãn session (session tags) thành một định dạng nhị phân có giới hạn dung lượng. Nếu tổng dung lượng metadata này vượt quá giới hạn, API sẽ báo lỗi `PackedPolicyTooLarge`.
 
 ### Cách khắc phục:
 1.  **Tối giản Session Policy:** Rút ngắn đường dẫn tài nguyên (resource paths) và gom nhóm các hành động (actions) nếu có thể.
@@ -129,7 +117,7 @@ Mặc dù rất mạnh mẽ, session policies cũng có những giới hạn ki�
 Session policies là một bước nâng cấp lớn cho bảo mật Kubernetes trên AWS, đơn giản hóa việc tuân thủ nguyên tắc đặc quyền tối thiểu (least privilege).
 
 Để tìm hiểu chi tiết hơn, bạn có thể tham khảo:
-*   [AWS Containers Blog - Session policies for Amazon EKS Pod Identity](https://aws.amazon.com/blogs/containers/session-policies-for-amazon-eks-pod-identity/)
-*   [Amazon EKS User Guide - Pod Identity Associations](https://docs.aws.amazon.com/eks/latest/userguide/pod-id-association.html)
+*   AWS Containers Blog - Session policies for Amazon EKS Pod Identity (https://aws.amazon.com/blogs/containers/session-policies-for-amazon-eks-pod-identity/)
+*   Amazon EKS User Guide - Pod Identity Associations (https://docs.aws.amazon.com/eks/latest/userguide/pod-id-association.html)
 
 *Bạn có kế hoạch áp dụng Session Policies cho cluster EKS của mình như thế nào? Hãy để lại ý kiến dưới phần bình luận nhé!*

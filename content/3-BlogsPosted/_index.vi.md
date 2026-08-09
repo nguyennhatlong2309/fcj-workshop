@@ -15,5 +15,5 @@ Bài viết giới thiệu chi tiết về AWS CLI v2, kiến trúc hoạt độ
 ###  [Blog 2 - Ý tưởng kết hợp AWS CLI & Hermes Agent](3.2-blog2/) — [Bài viết trên Facebook](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2236254263806200/?rdid=98lGo4WwJK4aSNns#)
 Đề xuất kế hoạch tích hợp công cụ dòng lệnh AWS CLI với khung AI Agent (Hermes Agent) của Nous Research nhằm tạo ra một trợ lý DevOps có khả năng điều khiển hạ tầng đám mây bằng ngôn ngữ tự nhiên thông qua các chatbot.
 
-###  [Blog 3 - Session Policies trong Amazon EKS Pod Identity](3.3-blog3/) — [Bài viết trên Facebook](https://www.facebook.com/groups/awsstudygroupfcj/permalink/2237000000000000/)
-Bài viết giới thiệu tính năng session policies trong Amazon EKS Pod Identity, giúp thu hẹp quyền truy cập IAM cho các pod một cách động và linh hoạt nhằm tuân thủ nguyên tắc đặc quyền tối thiểu (least privilege) mà không gây tràn lan số lượng IAM roles.
+###  [Blog 3 - Góc nhìn mới về Amazon S3: Biến không gian lưu trữ thành "trái tim" của kiến trúc Cloud & AI](3.3-blog3/) — [Bài viết trên Facebook](https://www.facebook.com/groups/660548818043427/?multi_permalinks=2237552647009695&ref=share)
+Đúc kết trải nghiệm thực tế về việc tái định vị Amazon S3 - từ một nơi cất file tĩnh thụ động thành trung tâm xử lý dữ liệu tự động (Event-driven) và Data Lake kết nối với các mô hình AI/ML hiệu quả cho các lập trình viên mới.

@@ -12,8 +12,8 @@ pre : " <b> 5.1. </b> "
 
 #### Tổng quan và Kiến trúc Workshop
 Trong workshop này, bạn sẽ tiến hành triển khai ứng dụng WEB_JENIKA trên đám mây AWS với một kiến trúc tối ưu chi phí (Free Tier), bảo mật và dễ dàng mở rộng:
-+ **Amazon EC2**: Đóng vai trò là máy chủ ứng dụng để chạy các container Docker (Nginx Reverse Proxy, Next.js Frontend, Spring Boot Backend và Hermes Agent) trong cùng một mạng ảo nội bộ.
-+ **Amazon RDS (MySQL)**: Tách biệt lớp cơ sở dữ liệu để giảm tải bộ nhớ RAM cho EC2, tránh lỗi tràn bộ nhớ (OOM) và đảm bảo dữ liệu được sao lưu an toàn.
++ **Amazon EC2**: Đóng vai trò là máy chủ ứng dụng để chạy toàn bộ các container Docker (Nginx Reverse Proxy, Next.js Frontend, Spring Boot Backend, cơ sở dữ liệu MySQL và Hermes Agent) trong cùng một mạng ảo nội bộ. Để tránh lỗi tràn bộ nhớ (OOM) do hạn chế của gói Free Tier, một tệp Swap File 2GB sẽ được thiết lập trên EC2.
++ **MySQL Database**: Cơ sở dữ liệu được chạy trực tiếp dưới dạng container trên EC2 và cấu hình Docker Volume để ghi dữ liệu lâu bền.
 + **Amazon S3**: Lưu trữ các tệp ảnh hóa đơn gốc và kết quả từ tính năng OCR hóa đơn một cách độc lập và lâu bền.
 + **AWS CloudWatch & SNS**: Sử dụng log driver `awslogs` của Docker để đẩy trực tiếp nhật ký hoạt động từ container Spring Boot lên CloudWatch Logs và cấu hình SNS gửi email cảnh báo tự động khi phát sinh lỗi `ERROR`.
 

@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 5.5. </b> "
 ---
 
-In this section, we will configure the DDNS domain link, set up the SSL (HTTPS) certificate for the system using Certbot Let's Encrypt, and establish an automated error notification pipeline using AWS CloudWatch Logs & AWS SNS.
+In this section, we will configure the custom domain link, set up the SSL (HTTPS) certificate for the system using Certbot Let's Encrypt, and establish an automated error notification pipeline using AWS CloudWatch Logs & AWS SNS.
 
 ---
 
@@ -19,7 +19,7 @@ The **WEB_JENIKA** platform uses the custom domain **`jenkam.site`**.
    * Configure settings:
      * **Domain name**: `jenkam.site`
    * Click **Create hosted zone**. Once successfully created, Route 53 will automatically assign a set of 4 **Name Servers (NS)** records (e.g., `ns-xxx.awsdns-xx.com`, `ns-xxx.awsdns-xx.org`, ...). Copy these 4 server addresses.
-   * Log in to the control panel of the domain registrar where you purchased `jenkam.site` (such as Namecheap, GoDaddy, etc.).
+   * Log in to the control panel of the domain registrar where you purchased `jenkam.site` (such as Nhan Hoa, Namecheap, GoDaddy, etc.).
    * Select your domain settings, find the **Name Servers** configuration -> Switch from the default to **Custom DNS (or Custom Name Servers)** and paste the 4 Route 53 NS addresses you copied. Click Save.
 
    ![Configure Hosted Zone Route 53](/images/5-Workshop/5.5-Policy/5.5.1_1.png)

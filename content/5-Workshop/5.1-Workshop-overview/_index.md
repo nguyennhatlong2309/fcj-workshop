@@ -12,8 +12,8 @@ pre : " <b> 5.1. </b> "
 
 #### Workshop Overview & Architecture
 In this workshop, you will deploy the WEB_JENIKA application on AWS using a cost-effective, scalable, and highly available hybrid cloud architecture:
-+ **Amazon EC2**: Used as the application host to run containerized services (Nginx Reverse Proxy, Next.js Frontend, Spring Boot Backend, and Hermes Agent) inside a unified Docker network.
-+ **Amazon RDS (MySQL)**: Provides a managed database layer that mitigates Out-of-Memory (OOM) risks by offloading data storage from the small EC2 instance.
++ **Amazon EC2**: Used as the application host to run all containerized services (Nginx Reverse Proxy, Next.js Frontend, Spring Boot Backend, MySQL Database, and Hermes Agent) inside a unified Docker network. To mitigate Out-of-Memory (OOM) risks under Free Tier constraints, a 2GB Swap File will be configured on the host.
++ **MySQL Database**: Runs directly as a container inside Docker on the EC2 host, with data persisted via a Docker Volume mapping.
 + **Amazon S3**: Acts as a decoupled, durable object storage service to store invoice images uploaded via the OCR processing feature.
 + **AWS CloudWatch & SNS**: Leverages Docker's native `awslogs` driver to stream backend logs directly to CloudWatch, triggering instant email notifications through SNS when exceptions occur.
 

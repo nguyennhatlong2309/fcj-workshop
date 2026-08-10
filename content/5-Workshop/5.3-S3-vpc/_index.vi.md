@@ -30,7 +30,7 @@ Trong phần này, chúng ta sẽ tiến hành khởi tạo máy chủ ảo Amaz
    ![Khởi tạo EC2 và Gán Elastic IP](/images/5-Workshop/5.3-S3-vpc/5.3.1.2.png)
 
 ##### Cấp phát và gán Elastic IP (IP tĩnh):
-Mặc định khi máy chủ EC2 tắt đi bật lại, IP công cộng sẽ thay đổi, làm mất liên kết với tên miền DDNS. Vì vậy ta cần cấp Elastic IP cố định:
+Mặc định khi máy chủ EC2 tắt đi bật lại, IP công cộng sẽ thay đổi, làm mất liên kết với tên miền. Vì vậy ta cần cấp Elastic IP cố định:
 1. Tại EC2 Console, chọn mục **Elastic IPs** ở menu bên trái -> Click **Allocate Elastic IP address**.
 2. Chọn **Allocate** để tạo IP tĩnh mới.
 3. Tích chọn IP vừa tạo -> Bấm **Actions** -> Chọn **Associate Elastic IP address**.

@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 5.5. </b> "
 ---
 
-Trong phần này, chúng ta sẽ cấu hình liên kết tên miền DDNS, thiết lập chứng chỉ bảo mật SSL (HTTPS) cho hệ thống thông qua Certbot Let's Encrypt và cấu hình hệ thống cảnh báo lỗi tự động qua AWS CloudWatch Logs & AWS SNS.
+Trong phần này, chúng ta sẽ cấu hình liên kết tên miền riêng, thiết lập chứng chỉ bảo mật SSL (HTTPS) cho hệ thống thông qua Certbot Let's Encrypt và cấu hình hệ thống cảnh báo lỗi tự động qua AWS CloudWatch Logs & AWS SNS.
 
 ---
 
@@ -19,7 +19,7 @@ Hệ thống **WEB_JENIKA** sử dụng tên miền riêng **`jenkam.site`**.
    * Thiết lập thông tin:
      * **Domain name**: `jenkam.site`
    * Bấm **Create hosted zone**. Sau khi khởi tạo thành công, Route 53 sẽ tự động cấp một bộ gồm 4 dòng bản ghi máy chủ tên miền **Name Servers (NS)** (ví dụ: `ns-xxx.awsdns-xx.com`, `ns-xxx.awsdns-xx.org`,...). Hãy sao chép 4 dòng địa chỉ này.
-   * Đăng nhập vào trang quản trị của nhà đăng ký tên miền nơi bạn mua `jenkam.site` (như Namecheap, GoDaddy, Mắt Bão,...).
+   * Đăng nhập vào trang quản trị của nhà đăng ký tên miền nơi bạn mua `jenkam.site` (như Nhân Hòa, Namecheap, GoDaddy,...).
    * Chọn cấu hình tên miền của bạn, tìm mục **Name Servers** (Máy chủ tên miền) -> Chuyển từ chế độ mặc định sang **Custom DNS (hoặc Custom Name Servers)** và dán 4 dòng địa chỉ NS của Route 53 vừa sao chép vào. Nhấn Lưu lại.
 
    ![Cấu hình Hosted Zone Route 53](/images/5-Workshop/5.5-Policy/5.5.1_1.png)

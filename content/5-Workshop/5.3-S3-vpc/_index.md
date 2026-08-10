@@ -30,7 +30,7 @@ To host our web services, we will deploy an Ubuntu Server virtual machine:
    ![Launch EC2 and Associate Elastic IP](/images/5-Workshop/5.3-S3-vpc/5.3.1.2.png)
 
 ##### Allocate & Associate Elastic IP (Static IP):
-By default, the public IP of an EC2 instance changes whenever the instance is stopped and restarted. We need to allocate a static Elastic IP to keep the address persistent for our DDNS domain:
+By default, the public IP of an EC2 instance changes whenever the instance is stopped and restarted. We need to allocate a static Elastic IP to keep the address persistent for our custom domain:
 1. In the EC2 Console, select **Elastic IPs** from the left menu -> Click **Allocate Elastic IP address**.
 2. Click **Allocate** to request a new static IP address.
 3. Check the allocated IP address -> Click **Actions** -> Select **Associate Elastic IP address**.

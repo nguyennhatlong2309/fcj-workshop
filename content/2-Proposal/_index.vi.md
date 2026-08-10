@@ -9,7 +9,7 @@ pre: " <b> 2. </b> "
 ## Hệ thống quản lý toàn diện quán cà phê đa nền tảng (Desktop & Web App) tích hợp AWS Cloud  
 
 ### 1. Tóm tắt điều hành  
-Dự án **BrewMaster Pro & WEB_JENIKA** được thiết kế nhằm cung cấp giải pháp quản lý quán cà phê, kho hàng, đối tác, nhân viên và doanh thu toàn diện. Hệ thống tích hợp song song cả ứng dụng Desktop (**Java Swing**) dành cho vận hành tại quầy và ứng dụng Web (**Next.js / React 19** kết hợp **Spring Boot**) dành cho quản trị viên và truy cập từ xa. Hệ thống chia sẻ một cơ sở dữ liệu MySQL tập trung và tận dụng hạ tầng dịch vụ điện toán đám mây **Amazon Web Services (AWS)** (bao gồm EC2, RDS, S3, CloudWatch, SNS) kết hợp ánh xạ tên miền miễn phí qua No-IP để đảm bảo tính sẵn sàng cao, bảo mật và tối ưu hóa chi phí vận hành.
+Dự án **BrewMaster Pro & WEB_JENIKA** được thiết kế nhằm cung cấp giải pháp quản lý quán cà phê, kho hàng, đối tác, nhân viên và doanh thu toàn diện. Hệ thống tích hợp song song cả ứng dụng Desktop (**Java Swing**) dành cho vận hành tại quầy và ứng dụng Web (**Next.js / React 19** kết hợp **Spring Boot**) dành cho quản trị viên và truy cập từ xa. Hệ thống chia sẻ một cơ sở dữ liệu MySQL tập trung và tận dụng hạ tầng dịch vụ điện toán đám mây **Amazon Web Services (AWS)** (bao gồm EC2, S3, CloudWatch, SNS) kết hợp tên miền riêng `jenkam.site` (đăng ký tại Nhân Hòa) và quản lý định tuyến DNS qua **AWS Route 53** để đảm bảo tính sẵn sàng cao, bảo mật và tối ưu hóa chi phí vận hành. Toàn bộ các dịch vụ (bao gồm cả cơ sở dữ liệu MySQL) được triển khai trên cùng một máy chủ ảo EC2 bằng Docker Compose.
 
 Đặc biệt, để làm đa dạng và tăng tính hiện đại cho dự án, hệ thống đã tận dụng sức nóng của kho lưu trữ **Hermes Agent** (link GitHub: [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent.git)) hiện đang đạt cột mốc ấn tượng với 226k stars. Hermes Agent có khả năng tự động tối ưu hóa, học hỏi và trở nên thông minh hơn theo thời gian sử dụng. Hệ thống tích hợp Hermes Agent bằng cách sử dụng các mô hình ngôn ngữ lớn (LLMs) miễn phí thông qua cổng **OpenRouter**, đồng thời thiết lập cho Hermes một Skill (kỹ năng hành động) đặc biệt. Kỹ năng này cho phép Hermes tự động tạo các đơn nhập hàng hoặc bán hàng bằng cách nhận diện và trích xuất dữ liệu từ hình ảnh hóa đơn do người dùng gửi qua các bot trò chuyện (như Telegram hoặc Discord) đã được cấu hình. Để thực hiện điều này một cách bảo mật, Hermes Agent được cấp một mã **JWT (JSON Web Token) đặc biệt** cho phép nó thực thi các yêu cầu ghi dữ liệu (POST requests) vào hệ thống Backend. Việc tích hợp tác nhân thông minh AI này không chỉ giúp tối ưu hóa quy trình nhập liệu thủ công truyền thống mà còn làm phong phú giải pháp kiến trúc của dự án, chứng minh khả năng kết hợp công nghệ AI Agent tiên tiến trong ứng dụng thực tiễn.
 
@@ -37,18 +37,17 @@ Nhiều cửa hàng cà phê và chuỗi bán lẻ nhỏ hiện nay vẫn quản
 ### 3. Kiến trúc giải pháp  
 Hệ thống được triển khai trên hạ tầng AWS chuẩn Production-ready:
 + **Tầng máy khách**: Người dùng truy cập Web App qua Trình duyệt web hoặc Desktop App Java Swing kết nối trực tiếp đến DB.
-+ **Tầng ứng dụng (Amazon EC2)**: Chạy container Nginx (Reverse Proxy & SSL), Next.js Frontend và Spring Boot Backend thông qua Docker Compose.
-+ **Tầng dữ liệu (Amazon RDS)**: Cơ sở dữ liệu MySQL được tách biệt trên RDS giúp giải phóng RAM cho EC2, tránh lỗi OOM và tự động sao lưu.
++ **Tầng ứng dụng & dữ liệu (Amazon EC2)**: Triển khai các container Docker bao gồm Nginx (Reverse Proxy & SSL), Next.js Frontend, Spring Boot Backend và cơ sở dữ liệu MySQL thông qua Docker Compose.
 + **Tầng lưu trữ (Amazon S3)**: Lưu trữ không giới hạn ảnh hóa đơn OCR.
++ **Tầng tối ưu hiệu năng**: Cấu hình bộ nhớ ảo (Swap File) 2GB trên máy chủ EC2 để giảm tải và ngăn ngừa lỗi tràn bộ nhớ (OOM) cho cơ sở dữ liệu MySQL khi chạy chung với các ứng dụng khác.
 + **Giám sát & Cảnh báo**: Đẩy logs từ Docker lên **AWS CloudWatch** thông qua log driver `awslogs` và kích hoạt gửi email cảnh báo qua **AWS SNS** khi phát sinh lỗi hệ thống.
 
 ![WEB_JENIKA Architecture](/images/5-Workshop/5.1-Workshop-overview/graph.jpeg)
 
 *Dịch vụ AWS sử dụng & Giải pháp mạng*  
-- **Amazon EC2**: Chạy máy chủ ứng dụng Next.js & Spring Boot (cấu hình `t3.micro`).
-- **Amazon RDS (MySQL)**: Quản lý cơ sở dữ liệu MySQL tập trung, ổn định và tự động backup.
+- **Amazon EC2**: Chạy toàn bộ hệ thống container (Next.js, Spring Boot, MySQL, Nginx) trên một máy chủ ảo duy nhất (cấu hình `t3.micro`), kết hợp Swap File 2GB làm RAM ảo.
 - **Amazon S3**: Lưu trữ các tệp ảnh hóa đơn gốc cho tính năng OCR.
-- **DNS Resolution (No-IP)**: Dịch vụ tên miền miễn phí trỏ trực tiếp về IP công cộng (Elastic IP) của máy chủ EC2 mà không cần dịch vụ Route 53 của AWS.
+- **DNS & Domain (Nhân Hòa & AWS Route 53)**: Sử dụng tên miền riêng `jenkam.site` đăng ký tại Nhân Hòa (49.000 VNĐ/năm), được định tuyến thông qua AWS Route 53 để phân giải tên miền về địa chỉ Elastic IP của EC2.
 - **AWS CloudWatch**: Thu thập và lọc nhật ký lỗi của container Backend.
 - **AWS SNS**: Gửi thông báo email/SMS cảnh báo lập trình viên khi có lỗi hệ thống.
 
@@ -71,12 +70,11 @@ Nhờ tối ưu hóa kiến trúc hạ tầng và tận dụng gói **AWS Free T
 
 | Dịch vụ / Tài nguyên | Gói áp dụng | Chi phí (12 tháng đầu) | Chi phí (Từ tháng 13) | Chi tiết / Hạn mức |
 | --- | --- | --- | --- | --- |
-| **Amazon EC2** | AWS Free Tier | 0.00 USD/tháng | ~5.00 USD/tháng | Cấu hình `t3.micro`, miễn phí 750 giờ/tháng. |
-| **Amazon RDS** | AWS Free Tier | 0.00 USD/tháng | ~3.00 USD/tháng | Cấu hình `db.t3.micro` MySQL, miễn phí 750 giờ/tháng và 20GB SSD storage. |
+| **Amazon EC2** | AWS Free Tier | 0.00 USD/tháng | ~5.00 USD/tháng | Cấu hình `t3.micro`, miễn phí 750 giờ/tháng. (Chạy toàn bộ Nginx, Next.js, Spring Boot, MySQL). |
 | **Amazon S3** | AWS Free Tier | 0.00 USD/tháng | ~0.50 USD/tháng | Miễn phí 5GB dung lượng lưu trữ trong năm đầu. |
 | **AWS CloudWatch & SNS** | AWS Free Tier | 0.00 USD/tháng | ~0.50 USD/tháng | Miễn phí 5GB Logs và 1.000.000 thông báo email/tháng. |
-| **DNS (No-IP)** | Free Domain | 0.00 USD/tháng | 0.00 USD/tháng | Sử dụng DDNS miễn phí từ No-IP cho việc phân giải tên miền. |
-| **Tổng cộng** | | **0.00 USD/tháng** | **~9.00 USD/tháng** | **Hoàn toàn miễn phí trong năm đầu tiên.** |
+| **Tên miền & Route 53** | Custom Domain | ~0.66 USD/tháng | ~0.66 USD/tháng | Đăng ký tên miền `jenkam.site` tại Nhân Hòa (49.000 VNĐ/năm, tương đương ~0.16 USD/tháng) và phí Hosted Zone của AWS Route 53 (0.50 USD/tháng). |
+| **Tổng cộng** | | **~0.66 USD/tháng** | **~6.66 USD/tháng** | **Tiết kiệm tối đa chi phí nhờ tối ưu hóa tài nguyên.** |
 
 ### 7. Đánh giá rủi ro  
 *Ma trận rủi ro*  
@@ -85,8 +83,8 @@ Nhờ tối ưu hóa kiến trúc hạ tầng và tận dụng gói **AWS Free T
 - **Lỗi kết nối API/Hạ tầng**: Ảnh hưởng trung bình, xác suất trung bình.  
 
 *Chiến lược giảm thiểu & Dự phòng*  
-- **Tránh OOM**: Thiết lập cấu hình **Swap File 2GB** trên EC2 và tách cơ sở dữ liệu sang **RDS MySQL** thay vì chạy MySQL container trên cùng EC2.
-- **Bảo mật dữ liệu**: Sử dụng cơ chế tự động sao lưu hàng ngày của RDS và phân quyền Least Privilege trên IAM Role cho EC2.
+- **Tránh OOM**: Thiết lập cấu hình **Swap File 2GB** trên máy chủ EC2 để làm bộ nhớ ảo, giúp hỗ trợ dung lượng RAM vật lý 1GB khi chạy đồng thời MySQL, Spring Boot và Next.js.
+- **Bảo mật dữ liệu**: Dữ liệu MySQL được lưu trữ lâu bền thông qua **Docker Volume** ánh xạ ra ổ đĩa của máy chủ EC2, đồng thời thiết lập quy trình sao lưu định kỳ (Database Backup Dump) lên Amazon S3 hoặc máy chủ bên ngoài.
 - **Lỗi kết nối**: Thiết lập Nginx Reverse Proxy với cơ chế logging chi tiết và cấu hình CloudWatch + SNS để phát hiện lỗi ngay lập tức và gửi email cảnh báo cho lập trình viên.
 
 ### 8. Kết quả kỳ vọng  

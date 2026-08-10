@@ -75,7 +75,7 @@ services:
     container_name: cfe_di_rom_frontend
     restart: always
     environment:
-      - NEXT_PUBLIC_API_URL=https://jenkam.ddns.net/api
+      - NEXT_PUBLIC_API_URL=https://jenkam.site/api
     expose:
       - "3000"
 

@@ -17,4 +17,4 @@ In this workshop, you will deploy the JENKAM application on AWS using a cost-eff
 + **Amazon S3**: Acts as a decoupled, durable object storage service to store invoice images uploaded via the OCR processing feature.
 + **AWS CloudWatch & SNS**: Leverages Docker's native `awslogs` driver to stream backend logs directly to CloudWatch, triggering instant email notifications through SNS when exceptions occur.
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/aws_system.png)
+![overview](/images/5-Workshop/5.1-Workshop-overview/new_aws_system.png)

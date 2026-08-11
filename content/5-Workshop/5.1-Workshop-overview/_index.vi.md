@@ -17,4 +17,4 @@ Trong workshop này, bạn sẽ tiến hành triển khai ứng dụng JENKAM tr
 + **Amazon S3**: Lưu trữ các tệp ảnh hóa đơn gốc và kết quả từ tính năng OCR hóa đơn một cách độc lập và lâu bền.
 + **AWS CloudWatch & SNS**: Sử dụng log driver `awslogs` của Docker để đẩy trực tiếp nhật ký hoạt động từ container Spring Boot lên CloudWatch Logs và cấu hình SNS gửi email cảnh báo tự động khi phát sinh lỗi `ERROR`.
 
-![overview](/images/5-Workshop/5.1-Workshop-overview/aws_system.png)
+![overview](/images/5-Workshop/5.1-Workshop-overview/new_aws_system.png)

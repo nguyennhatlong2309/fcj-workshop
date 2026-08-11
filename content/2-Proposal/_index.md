@@ -5,11 +5,11 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-# BrewMaster Pro & WEB_JENIKA (WEB_CAFE)  
+# BrewMaster Pro & JENKAM (WEB_CAFE)  
 ## A Comprehensive Multi-Platform Coffee Shop Management Solution (Desktop & Web) Integrated with AWS Cloud  
 
 ### 1. Executive Summary  
-The **BrewMaster Pro & WEB_JENIKA** project is designed to provide a comprehensive management solution for coffee shops, inventory, partners, employees, and revenue. The system integrates a desktop application (**Java Swing**) for on-site operations and a web application (**Next.js / React 19** with a **Spring Boot** backend) for remote administrators. Both platforms share a centralized MySQL database and leverage **Amazon Web Services (AWS)** (EC2, S3, CloudWatch, SNS) along with a custom domain `jenkam.site` (registered at Nhan Hoa) and DNS routing managed via **AWS Route 53** to ensure high availability, security, and low operational costs. All services (including the MySQL database) are deployed on a single EC2 virtual instance using Docker Compose.
+The **BrewMaster Pro & JENKAM** project is designed to provide a comprehensive management solution for coffee shops, inventory, partners, employees, and revenue. The system integrates a desktop application (**Java Swing**) for on-site operations and a web application (**Next.js / React 19** with a **Spring Boot** backend) for remote administrators. Both platforms share a centralized MySQL database and leverage **Amazon Web Services (AWS)** (EC2, S3, CloudWatch, SNS) along with a custom domain `jenkam.site` (registered at Nhan Hoa) and DNS routing managed via **AWS Route 53** to ensure high availability, security, and low operational costs. All services (including the MySQL database) are deployed on a single EC2 virtual instance using Docker Compose.
 
 In particular, to diversify and elevate the technical sophistication of the project, the system leverages the massive popularity of the **Hermes Agent** repository (GitHub: [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent.git)) which currently boasts over 226k stars. Hermes Agent features the capability to learn, adapt, and grow smarter over time with usage. By utilizing free LLMs accessed through **OpenRouter**, the project configures a custom Skill for Hermes, enabling it to automatically create purchase or sales orders. Users can simply send invoice images through a configured chatbot (such as Telegram or Discord), which Hermes processes to extract data. To execute these operations securely, Hermes is granted a **special JWT (JSON Web Token)** that authorizes it to make write operations (POST requests) directly to the Spring Boot backend. Integrating this intelligent AI agent not only automates traditional manual data entry workflows but also diversifies the project architecture, showcasing the practical integration of cutting-edge AI Agent technologies.
 
@@ -42,7 +42,7 @@ The platform is built on a production-ready AWS infrastructure:
 - **Performance Optimization Tier**: Configures a **2GB Swap File** on the EC2 instance to serve as virtual RAM, preventing Out-of-Memory (OOM) errors for the MySQL database when running concurrently with application components.
 - **Monitoring & Alerting**: Streams container logs directly to **AWS CloudWatch** using Docker's native `awslogs` driver, triggering email alerts via **AWS SNS** upon system exceptions.
 
-![WEB_JENIKA Architecture](/images/5-Workshop/5.1-Workshop-overview/graph.jpeg)
+![JENKAM Architecture](/images/5-Workshop/5.1-Workshop-overview/graph.jpeg)
 
 *AWS Services & Network Solution Used*  
 - **Amazon EC2**: Hosts the entire containerized system (Next.js, Spring Boot, MySQL, Nginx) on a single virtual instance (`t3.micro`), supported by a 2GB Swap File.

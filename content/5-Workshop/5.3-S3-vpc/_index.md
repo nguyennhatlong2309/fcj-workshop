@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 5.3. </b> "
 ---
 
-In this section, we will launch an Amazon EC2 instance in the **Sydney region (ap-southeast-2)**, configure a 2 GB Swap File for virtual RAM, and install Docker/Docker Compose to prepare the hosting environment for WEB_JENIKA.
+In this section, we will launch an Amazon EC2 instance in the **Sydney region (ap-southeast-2)**, configure a 2 GB Swap File for virtual RAM, and install Docker/Docker Compose to prepare the hosting environment for JENKAM.
 
 ---
 
@@ -24,7 +24,7 @@ To host our web services, we will deploy an Ubuntu Server virtual machine:
    *   **Network settings**:
        *   Select **Select existing security group** and check the **`web-app-sg`** security group created in Section 5.2.
    *   **Advanced details**:
-       *   **IAM instance profile**: Choose **`WebJenika-EC2-InstanceProfile`** (automatically created via the `WebJenika-EC2-Role` in Section 5.2 to grant S3 and CloudWatch permissions to the server).
+       *   **IAM instance profile**: Choose **`Jenkam-EC2-InstanceProfile`** (automatically created via the `Jenkam-EC2-Role` in Section 5.2 to grant S3 and CloudWatch permissions to the server).
 4. Click **Launch instance** and wait about 1 minute for the instance to boot.
 
    ![Launch EC2 and Associate Elastic IP](/images/5-Workshop/5.3-S3-vpc/5.3.1.2.png)

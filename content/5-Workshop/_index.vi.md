@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Triển khai hệ thống WEB_JENIKA trên đám mây AWS
+# Triển khai hệ thống JENKAM trên đám mây AWS
 
 #### Tổng quan
 
-Trong workshop này, chúng ta sẽ học cách triển khai thực tế hệ thống quản lý quán cà phê **WEB_JENIKA (CAFE_DI_ROM)** lên nền tảng đám mây **Amazon Web Services (AWS)**. Đây là một bài thực hành hướng dẫn quy trình đóng gói ứng dụng bằng Docker và chạy trên một máy chủ ảo EC2 duy nhất (sử dụng mạng Default VPC của AWS để tối ưu chi phí trong gói Free Tier). 
+Trong workshop này, chúng ta sẽ học cách triển khai thực tế hệ thống quản lý quán cà phê **JENKAM (CAFE_DI_ROM)** lên nền tảng đám mây **Amazon Web Services (AWS)**. Đây là một bài thực hành hướng dẫn quy trình đóng gói ứng dụng bằng Docker và chạy trên một máy chủ ảo EC2 duy nhất (sử dụng mạng Default VPC của AWS để tối ưu chi phí trong gói Free Tier). 
 
 Hệ thống được thiết kế theo các tiêu chuẩn vận hành thực tế bao gồm:
 *   **Reverse Proxy & SSL**: Sử dụng Nginx làm reverse proxy và Certbot Let's Encrypt cấp chứng chỉ bảo mật cho tên miền (`jenkam.site`).

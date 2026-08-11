@@ -36,7 +36,7 @@ AWS does not allow you to delete an S3 bucket that still contains objects. There
 ##### Step 4: Delete the IAM Role and Security Group
 1. **Delete IAM Role:** 
    * Navigate to the **IAM Console** -> Select **Roles** on the left menu.
-   * Search for and select the **`WebJenika-EC2-Role`** role -> Click **Delete**.
+   * Search for and select the **`Jenkam-EC2-Role`** role -> Click **Delete**.
    * Enter the role name to confirm deletion.
 2. **Delete Security Group:**
    * Navigate to the **EC2 Console** -> Select **Security Groups** on the left menu.

@@ -25,7 +25,7 @@ pre : " <b> 5.2. </b> "
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "WebJenikaWorkshopPermissions",
+            "Sid": "JenkamWorkshopPermissions",
             "Effect": "Allow",
             "Action": [
                 "cloudformation:*",
@@ -104,7 +104,7 @@ Vì toàn bộ hệ thống (Next.js Frontend, Spring Boot Backend, MySQL Databa
 
 
 
-##### 3.3. Khởi tạo IAM Role cho EC2 (`WebJenika-EC2-Role`)
+##### 3.3. Khởi tạo IAM Role cho EC2 (`Jenkam-EC2-Role`)
 Cấp quyền bảo mật để EC2 giao tiếp với S3 và đẩy log Docker trực tiếp lên CloudWatch Logs:
 1. Tìm kiếm dịch vụ **IAM** trên AWS Console -> Chọn **Roles** ở thanh bên trái -> Click **Create role**.
 2. Chọn loại thực thể tin cậy (**Trusted entity type**): **AWS service** -> Chọn case sử dụng (**Use case**): **EC2**. Click **Next**.
@@ -112,7 +112,7 @@ Cấp quyền bảo mật để EC2 giao tiếp với S3 và đẩy log Docker t
    * `AmazonS3FullAccess` (hoặc tạo Custom Policy chỉ cho phép thao tác trên bucket `jenkam-images`).
    * `CloudWatchLogsFullAccess` (cho phép đẩy logs của Docker backend lên CloudWatch).
 4. Nhấn **Next**. Thiết lập thông tin định danh:
-   * **Role name**: `WebJenika-EC2-Role`
+   * **Role name**: `Jenkam-EC2-Role`
 5. Nhấn **Create role** để hoàn thành. Hệ thống sẽ tự động tạo một **Instance Profile** cùng tên để bạn gán vào máy chủ EC2 khi khởi tạo.
 
    ![Cấu hình IAM Role cho EC2](/images/5-Workshop/5.2-Prerequisite/5.2_3.3.png)

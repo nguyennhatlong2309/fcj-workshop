@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 5. </b> "
 ---
 
-# Deploy WEB_JENIKA on AWS Cloud
+# Deploy JENKAM on AWS Cloud
 
 #### Overview
 
-In this workshop, you will learn how to deploy the **WEB_JENIKA (CAFE_DI_ROM)** coffee shop management system on **Amazon Web Services (AWS)**. This hands-on lab guides you through the process of containerizing the application with Docker and running it on a single EC2 instance inside the AWS Default VPC to maximize cost savings within the AWS Free Tier.
+In this workshop, you will learn how to deploy the **JENKAM (CAFE_DI_ROM)** coffee shop management system on **Amazon Web Services (AWS)**. This hands-on lab guides you through the process of containerizing the application with Docker and running it on a single EC2 instance inside the AWS Default VPC to maximize cost savings within the AWS Free Tier.
 
 The system is deployed using production-grade practices:
 *   **Reverse Proxy & SSL**: Uses Nginx as a reverse proxy and Certbot Let's Encrypt to issue SSL certificates for the domain (`jenkam.site`).

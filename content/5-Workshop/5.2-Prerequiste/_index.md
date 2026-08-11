@@ -25,7 +25,7 @@ Ensure your AWS IAM User account has sufficient permissions to provision and cle
     "Version": "2012-10-17",
     "Statement": [
         {
-            "Sid": "WebJenikaWorkshopPermissions",
+            "Sid": "JenkamWorkshopPermissions",
             "Effect": "Allow",
             "Action": [
                 "cloudformation:*",
@@ -109,7 +109,7 @@ To store invoice image files for the OCR processing feature:
 
 
 
-##### 3.3. Provision IAM Role for EC2 (`WebJenika-EC2-Role`)
+##### 3.3. Provision IAM Role for EC2 (`Jenkam-EC2-Role`)
 Grants secure permissions for the EC2 instance to communicate with S3 and stream Docker logs directly to CloudWatch Logs:
 1. Search for the **IAM** service on the AWS Console -> Select **Roles** on the left menu -> Click **Create role**.
 2. Select **Trusted entity type**: **AWS service** -> Select **EC2** as the service use case. Click **Next**.
@@ -117,7 +117,7 @@ Grants secure permissions for the EC2 instance to communicate with S3 and stream
    * `AmazonS3FullAccess` (or create a Custom Policy restricting access only to the `jenkam-images` bucket).
    * `CloudWatchLogsFullAccess` (allows streaming logs from the Docker backend to CloudWatch).
 4. Click **Next**. Set the identifying info:
-   * **Role name**: `WebJenika-EC2-Role`
+   * **Role name**: `Jenkam-EC2-Role`
 5. Click **Create role**. The system will automatically create an **Instance Profile** with the same name, which you can attach to your EC2 instance during launch.
 
    ![IAM Role Creation](/images/5-Workshop/5.2-Prerequisite/5.2_3.3.png)

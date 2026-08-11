@@ -36,7 +36,7 @@ AWS không cho phép xóa trực tiếp một S3 bucket khi bên trong vẫn cò
 ##### Bước 4: Xóa IAM Role và Security Group
 1. **Xóa IAM Role:** 
    * Truy cập **IAM Console** -> Chọn **Roles** ở cột bên trái.
-   * Tìm kiếm và tích chọn Role **`WebJenika-EC2-Role`** -> Click nút **Delete**.
+   * Tìm kiếm và tích chọn Role **`Jenkam-EC2-Role`** -> Click nút **Delete**.
    * Nhập tên Role để xác nhận xóa.
 2. **Xóa Security Group:**
    * Truy cập **EC2 Console** -> Chọn **Security Groups** ở cột bên trái.

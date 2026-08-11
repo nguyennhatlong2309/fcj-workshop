@@ -11,7 +11,7 @@ In this section, we will configure the custom domain link, set up the SSL (HTTPS
 ---
 
 #### 1. Configure Domain and Obtain Free SSL Certificate
-The **WEB_JENIKA** platform uses the custom domain **`jenkam.site`**.
+The **JENKAM** platform uses the custom domain **`jenkam.site`**.
 
 ##### Execution Steps:
 1. **Link Route 53 Name Servers (NS) with Domain Registrar:**

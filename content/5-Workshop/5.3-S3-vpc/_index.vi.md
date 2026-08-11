@@ -6,7 +6,7 @@ chapter : false
 pre : " <b> 5.3. </b> "
 ---
 
-Trong phần này, chúng ta sẽ tiến hành khởi tạo máy chủ ảo Amazon EC2 trên vùng **Sydney (ap-southeast-2)**, cấu hình bộ nhớ ảo Swap File 2GB và cài đặt môi trường chạy Docker để chuẩn bị triển khai WEB_JENIKA.
+Trong phần này, chúng ta sẽ tiến hành khởi tạo máy chủ ảo Amazon EC2 trên vùng **Sydney (ap-southeast-2)**, cấu hình bộ nhớ ảo Swap File 2GB và cài đặt môi trường chạy Docker để chuẩn bị triển khai JENKAM.
 
 ---
 
@@ -24,7 +24,7 @@ Trong phần này, chúng ta sẽ tiến hành khởi tạo máy chủ ảo Amaz
    *   **Network settings**:
        *   Chọn **Select existing security group** và tích chọn nhóm bảo mật **`web-app-sg`** đã tạo ở Mục 5.2.
    *   **Advanced details**:
-       *   **IAM instance profile**: Chọn **`WebJenika-EC2-InstanceProfile`** (đã được tạo tự động thông qua IAM Role `WebJenika-EC2-Role` ở Mục 5.2 để tự động cấp quyền ghi S3 và CloudWatch cho máy chủ).
+       *   **IAM instance profile**: Chọn **`Jenkam-EC2-InstanceProfile`** (đã được tạo tự động thông qua IAM Role `Jenkam-EC2-Role` ở Mục 5.2 để tự động cấp quyền ghi S3 và CloudWatch cho máy chủ).
 4. Nhấn **Launch instance** và đợi khoảng 1 phút để máy chủ khởi chạy.
 
    ![Khởi tạo EC2 và Gán Elastic IP](/images/5-Workshop/5.3-S3-vpc/5.3.1.2.png)

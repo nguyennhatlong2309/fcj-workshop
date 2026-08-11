@@ -11,7 +11,7 @@ Trong phần này, chúng ta sẽ cấu hình liên kết tên miền riêng, th
 ---
 
 #### 1. Cấu hình tên miền và Cấp chứng chỉ SSL miễn phí
-Hệ thống **WEB_JENIKA** sử dụng tên miền riêng **`jenkam.site`**.
+Hệ thống **JENKAM** sử dụng tên miền riêng **`jenkam.site`**.
 
 ##### Các bước thực hiện:
 1. **Liên kết Name Servers (NS) của Route 53 với Nhà đăng ký tên miền:**

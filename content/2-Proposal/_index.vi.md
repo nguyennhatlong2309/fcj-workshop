@@ -5,11 +5,11 @@ weight: 2
 chapter: false
 pre: " <b> 2. </b> "
 ---
-# BrewMaster Pro & WEB_JENIKA (WEB_CAFE)  
+# BrewMaster Pro & JENKAM (WEB_CAFE)  
 ## Hệ thống quản lý toàn diện quán cà phê đa nền tảng (Desktop & Web App) tích hợp AWS Cloud  
 
 ### 1. Tóm tắt điều hành  
-Dự án **BrewMaster Pro & WEB_JENIKA** được thiết kế nhằm cung cấp giải pháp quản lý quán cà phê, kho hàng, đối tác, nhân viên và doanh thu toàn diện. Hệ thống tích hợp song song cả ứng dụng Desktop (**Java Swing**) dành cho vận hành tại quầy và ứng dụng Web (**Next.js / React 19** kết hợp **Spring Boot**) dành cho quản trị viên và truy cập từ xa. Hệ thống chia sẻ một cơ sở dữ liệu MySQL tập trung và tận dụng hạ tầng dịch vụ điện toán đám mây **Amazon Web Services (AWS)** (bao gồm EC2, S3, CloudWatch, SNS) kết hợp tên miền riêng `jenkam.site` (đăng ký tại Nhân Hòa) và quản lý định tuyến DNS qua **AWS Route 53** để đảm bảo tính sẵn sàng cao, bảo mật và tối ưu hóa chi phí vận hành. Toàn bộ các dịch vụ (bao gồm cả cơ sở dữ liệu MySQL) được triển khai trên cùng một máy chủ ảo EC2 bằng Docker Compose.
+Dự án **BrewMaster Pro & JENKAM** được thiết kế nhằm cung cấp giải pháp quản lý quán cà phê, kho hàng, đối tác, nhân viên và doanh thu toàn diện. Hệ thống tích hợp song song cả ứng dụng Desktop (**Java Swing**) dành cho vận hành tại quầy và ứng dụng Web (**Next.js / React 19** kết hợp **Spring Boot**) dành cho quản trị viên và truy cập từ xa. Hệ thống chia sẻ một cơ sở dữ liệu MySQL tập trung và tận dụng hạ tầng dịch vụ điện toán đám mây **Amazon Web Services (AWS)** (bao gồm EC2, S3, CloudWatch, SNS) kết hợp tên miền riêng `jenkam.site` (đăng ký tại Nhân Hòa) và quản lý định tuyến DNS qua **AWS Route 53** để đảm bảo tính sẵn sàng cao, bảo mật và tối ưu hóa chi phí vận hành. Toàn bộ các dịch vụ (bao gồm cả cơ sở dữ liệu MySQL) được triển khai trên cùng một máy chủ ảo EC2 bằng Docker Compose.
 
 Đặc biệt, để làm đa dạng và tăng tính hiện đại cho dự án, hệ thống đã tận dụng sức nóng của kho lưu trữ **Hermes Agent** (link GitHub: [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent.git)) hiện đang đạt cột mốc ấn tượng với 226k stars. Hermes Agent có khả năng tự động tối ưu hóa, học hỏi và trở nên thông minh hơn theo thời gian sử dụng. Hệ thống tích hợp Hermes Agent bằng cách sử dụng các mô hình ngôn ngữ lớn (LLMs) miễn phí thông qua cổng **OpenRouter**, đồng thời thiết lập cho Hermes một Skill (kỹ năng hành động) đặc biệt. Kỹ năng này cho phép Hermes tự động tạo các đơn nhập hàng hoặc bán hàng bằng cách nhận diện và trích xuất dữ liệu từ hình ảnh hóa đơn do người dùng gửi qua các bot trò chuyện (như Telegram hoặc Discord) đã được cấu hình. Để thực hiện điều này một cách bảo mật, Hermes Agent được cấp một mã **JWT (JSON Web Token) đặc biệt** cho phép nó thực thi các yêu cầu ghi dữ liệu (POST requests) vào hệ thống Backend. Việc tích hợp tác nhân thông minh AI này không chỉ giúp tối ưu hóa quy trình nhập liệu thủ công truyền thống mà còn làm phong phú giải pháp kiến trúc của dự án, chứng minh khả năng kết hợp công nghệ AI Agent tiên tiến trong ứng dụng thực tiễn.
 
@@ -42,7 +42,7 @@ Hệ thống được triển khai trên hạ tầng AWS chuẩn Production-read
 + **Tầng tối ưu hiệu năng**: Cấu hình bộ nhớ ảo (Swap File) 2GB trên máy chủ EC2 để giảm tải và ngăn ngừa lỗi tràn bộ nhớ (OOM) cho cơ sở dữ liệu MySQL khi chạy chung với các ứng dụng khác.
 + **Giám sát & Cảnh báo**: Đẩy logs từ Docker lên **AWS CloudWatch** thông qua log driver `awslogs` và kích hoạt gửi email cảnh báo qua **AWS SNS** khi phát sinh lỗi hệ thống.
 
-![WEB_JENIKA Architecture](/images/5-Workshop/5.1-Workshop-overview/graph.jpeg)
+![JENKAM Architecture](/images/5-Workshop/5.1-Workshop-overview/graph.jpeg)
 
 *Dịch vụ AWS sử dụng & Giải pháp mạng*  
 - **Amazon EC2**: Chạy toàn bộ hệ thống container (Next.js, Spring Boot, MySQL, Nginx) trên một máy chủ ảo duy nhất (cấu hình `t3.micro`), kết hợp Swap File 2GB làm RAM ảo.

@@ -42,7 +42,7 @@ Hệ thống được triển khai trên hạ tầng AWS chuẩn Production-read
 + **Tầng tối ưu hiệu năng**: Cấu hình bộ nhớ ảo (Swap File) 2GB trên máy chủ EC2 để giảm tải và ngăn ngừa lỗi tràn bộ nhớ (OOM) cho cơ sở dữ liệu MySQL khi chạy chung với các ứng dụng khác.
 + **Giám sát & Cảnh báo**: Đẩy logs từ Docker lên **AWS CloudWatch** thông qua log driver `awslogs` và kích hoạt gửi email cảnh báo qua **AWS SNS** khi phát sinh lỗi hệ thống.
 
-![JENKAM Architecture](/images/5-Workshop/5.1-Workshop-overview/graph.jpeg)
+![JENKAM Architecture](/images/5-Workshop/5.1-Workshop-overview/new_aws_system.png)
 
 *Dịch vụ AWS sử dụng & Giải pháp mạng*  
 - **Amazon EC2**: Chạy toàn bộ hệ thống container (Next.js, Spring Boot, MySQL, Nginx) trên một máy chủ ảo duy nhất (cấu hình `t3.micro`), kết hợp Swap File 2GB làm RAM ảo.

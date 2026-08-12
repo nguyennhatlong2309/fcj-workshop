@@ -42,7 +42,7 @@ The platform is built on a production-ready AWS infrastructure:
 - **Performance Optimization Tier**: Configures a **2GB Swap File** on the EC2 instance to serve as virtual RAM, preventing Out-of-Memory (OOM) errors for the MySQL database when running concurrently with application components.
 - **Monitoring & Alerting**: Streams container logs directly to **AWS CloudWatch** using Docker's native `awslogs` driver, triggering email alerts via **AWS SNS** upon system exceptions.
 
-![JENKAM Architecture](/images/5-Workshop/5.1-Workshop-overview/graph.jpeg)
+![JENKAM Architecture](/images/5-Workshop/5.1-Workshop-overview/new_aws_system.png)
 
 *AWS Services & Network Solution Used*  
 - **Amazon EC2**: Hosts the entire containerized system (Next.js, Spring Boot, MySQL, Nginx) on a single virtual instance (`t3.micro`), supported by a 2GB Swap File.
